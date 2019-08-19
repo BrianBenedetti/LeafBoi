@@ -20,27 +20,52 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     private bool _gliding = false;
     private bool _canDash = true;
+    private bool _dashing;
 
     private float _facingAngle;
     private float _playerRotation;
-    private float _dashTimer;
+    private float _dashTime;
+
+    [SerializeField]
+    protected float _jumpHeight;
+
+    [SerializeField]
+    protected float _dashLimit;
 
     [SerializeField]
     protected float _maxFallVelocity;
 
     [SerializeField]
-    protected Transform _dashPoint;
+    protected float _dashMult;
 
     private void FixedUpdate()
     {
-        _rg.velocity = new Vector3(_moveAxis.x * speed, _rg.velocity.y, _moveAxis.y * speed);
+        if (!_dashing)
+        {
+            _rg.velocity = new Vector3(_moveAxis.x * speed, _rg.velocity.y, _moveAxis.y * speed);
+        }
 
         transform.rotation = Quaternion.Slerp(transform.rotation, PlayerFacing(), Time.deltaTime * smoothing);
+
+        if (_dashing)
+        {
+            _dashTime -= Time.deltaTime;
+            _rg.velocity = transform.right * speed * _dashMult;
+            if (_dashTime < 0)
+            {
+                _dashing = false;
+                _rg.velocity = Vector3.zero;
+                _dashTime = _dashLimit;
+            }
+        }
 
         //If the player holds the button for gliding the players max fall velocity will be reduced (Should probably change this to add a force, will work out specifics later after discussing) 
         if (_gliding)
         {
-            _rg.velocity = new Vector3(_rg.velocity.x, -0.99f * _maxFallVelocity, _rg.velocity.z);
+            if (!(_rg.velocity.y > -1f))
+            {
+                _rg.velocity += Vector3.down * 1.5f * Physics.gravity.y * Time.deltaTime;
+            }
         }
 
         //Makes fall feel faster in order to be able to distinguish between normal fall and glide
@@ -53,6 +78,8 @@ public class PlayerMovement : MonoBehaviour
     //Sets up the controls to call specific functions or set certain values at the beginning of the scene
     private void Awake()
     {
+        _dashTime = _dashLimit;
+
         _rg = GetComponent<Rigidbody>();
 
         _controls = new InputMaster();
@@ -71,11 +98,12 @@ public class PlayerMovement : MonoBehaviour
         _controls.Player.Dash.performed += context => HandleDash();
     }
 
+    //Handles what happens when any of the buttons that entail a dash are pressed.
     private void HandleDash()
     {
         if (_canDash)
         {
-            
+            _dashing = true;
         }
     }
 
@@ -120,13 +148,13 @@ public class PlayerMovement : MonoBehaviour
     {
         if (!_grounded && _secondJump)
         {
-            _rg.AddForce(new Vector3(0, jumpForce, 0));
+            _rg.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
             _secondJump = false;
         }
 
         if (_grounded)
         {
-            _rg.AddForce(new Vector3(0, jumpForce, 0));
+            _rg.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * _jumpHeight));
             _grounded = false;
         }   
     }

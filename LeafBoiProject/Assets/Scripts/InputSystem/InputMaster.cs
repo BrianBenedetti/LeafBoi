@@ -47,7 +47,7 @@ public class InputMaster : IInputActionCollection
                     ""id"": ""a6bb4bf3-37da-44e3-9b37-2a8360c532f4"",
                     ""expectedControlType"": """",
                     ""processors"": """",
-                    ""interactions"": ""Hold(duration=0.6)""
+                    ""interactions"": """"
                 },
                 {
                     ""name"": ""Dash"",
@@ -172,7 +172,7 @@ public class InputMaster : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""99b16f8f-5917-4a3c-b758-17c61f9febf2"",
-                    ""path"": ""<DualShockGamepad>/rightStick"",
+                    ""path"": ""<DualShockGamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -238,7 +238,18 @@ public class InputMaster : IInputActionCollection
                 {
                     ""name"": """",
                     ""id"": ""1486baf6-8d96-42b2-8f4c-fa1bd0a2ec9e"",
-                    ""path"": ""<DualShockGamepad>/buttonSouth"",
+                    ""path"": ""<DualShockGamepad>/leftTrigger"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Glide"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""751588a5-ef6a-41b5-9617-99b6beb1eb35"",
+                    ""path"": ""<DualShockGamepad>/rightTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Controller"",
@@ -253,6 +264,28 @@ public class InputMaster : IInputActionCollection
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7af137f3-62f3-4df0-9567-76dfa5706938"",
+                    ""path"": ""<DualShockGamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""99a76d49-9909-47b5-a444-84b3c7dfc571"",
+                    ""path"": ""<DualShockGamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
