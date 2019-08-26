@@ -2,29 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GroundedState : StateMachineBehaviour
+public class NatureState : StateMachineBehaviour
 {
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-       Player.instance.canMove = true;
+        PlayerController.instance.natureState = true;
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
     //override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     //{
-    //    float x = Input.GetAxis("Horizontal");
-
-    //        transform.Translate(Vector3.right * x * 10 * Time.deltaTime);
-    
+    //    
     //}
 
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (!animator.GetBool("Grounded")) {
-            Player.instance.canMove = false;
-        }
+        PlayerController.instance.natureState = false;
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

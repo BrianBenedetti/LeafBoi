@@ -154,7 +154,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (_grounded)
         {
-            _rg.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * _jumpHeight));
+            _rg.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
             _grounded = false;
         }   
     }

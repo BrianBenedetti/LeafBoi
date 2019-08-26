@@ -56,6 +56,22 @@ public class InputMaster : IInputActionCollection
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Camera"",
+                    ""type"": ""Button"",
+                    ""id"": ""913295f8-7691-4d1c-b8d2-52afff6c7d3f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""30280306-952e-4d16-95ef-5277b5f2eff5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -289,6 +305,50 @@ public class InputMaster : IInputActionCollection
                     ""action"": ""Dash"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""89696953-6e87-4dcd-91c6-071a257062f9"",
+                    ""path"": ""<DualShockGamepad>/rightStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""949f034b-82db-4c9c-9584-7d792016890f"",
+                    ""path"": ""<Mouse>/position/x"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Camera"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9b74a6e8-dc2c-4ee8-8947-a9b551e25982"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard and Mouse"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fe677513-bd97-4dbf-be65-dd147775327e"",
+                    ""path"": ""<DualShockGamepad>/start"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Controller"",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -332,6 +392,8 @@ public class InputMaster : IInputActionCollection
         m_Player_Interact = m_Player.GetAction("Interact");
         m_Player_Glide = m_Player.GetAction("Glide");
         m_Player_Dash = m_Player.GetAction("Dash");
+        m_Player_Camera = m_Player.GetAction("Camera");
+        m_Player_Pause = m_Player.GetAction("Pause");
     }
 
     ~InputMaster()
@@ -386,6 +448,8 @@ public class InputMaster : IInputActionCollection
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Glide;
     private readonly InputAction m_Player_Dash;
+    private readonly InputAction m_Player_Camera;
+    private readonly InputAction m_Player_Pause;
     public struct PlayerActions
     {
         private InputMaster m_Wrapper;
@@ -395,6 +459,8 @@ public class InputMaster : IInputActionCollection
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Glide => m_Wrapper.m_Player_Glide;
         public InputAction @Dash => m_Wrapper.m_Player_Dash;
+        public InputAction @Camera => m_Wrapper.m_Player_Camera;
+        public InputAction @Pause => m_Wrapper.m_Player_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -419,6 +485,12 @@ public class InputMaster : IInputActionCollection
                 Dash.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 Dash.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
                 Dash.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnDash;
+                Camera.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamera;
+                Camera.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamera;
+                Camera.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnCamera;
+                Pause.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                Pause.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
+                Pause.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -438,6 +510,12 @@ public class InputMaster : IInputActionCollection
                 Dash.started += instance.OnDash;
                 Dash.performed += instance.OnDash;
                 Dash.canceled += instance.OnDash;
+                Camera.started += instance.OnCamera;
+                Camera.performed += instance.OnCamera;
+                Camera.canceled += instance.OnCamera;
+                Pause.started += instance.OnPause;
+                Pause.performed += instance.OnPause;
+                Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -467,5 +545,7 @@ public class InputMaster : IInputActionCollection
         void OnInteract(InputAction.CallbackContext context);
         void OnGlide(InputAction.CallbackContext context);
         void OnDash(InputAction.CallbackContext context);
+        void OnCamera(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }
