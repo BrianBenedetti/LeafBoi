@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -12,10 +13,13 @@ public class PlayerController : MonoBehaviour
 
     public bool pause;
 
+    public GameObject interactable;
     public bool normalState = false;
     public bool blightState = false;
     public bool natureState = false;
     public bool cinematicState = false;
+
+    public Text interact;
 
     private Vector2 _moveAxis;
     private Vector2 _playerAxis;
@@ -103,6 +107,14 @@ public class PlayerController : MonoBehaviour
         else {
             //Freezes player based on constraints during pause
             _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        }
+
+        if (interactable != null)
+        {
+            interact.gameObject.SetActive(true);
+        }
+        else {
+            interact.gameObject.SetActive(false);
         }
     }
 
@@ -224,7 +236,20 @@ public class PlayerController : MonoBehaviour
     private void HandleInteraction()
     {
         anim.SetTrigger("Interaction");
-        Debug.Log("Player is Interacting with something!");
+
+        if (interactable != null)
+        {
+            print("Interacting with " + interactable.name);
+
+            if (interactable.GetComponent<Interaction>().NPC)
+            {
+                print("This character is an NPC and therefore will cause cinematic to go active for a few seconds");
+            }
+        }
+        else
+        {
+            print("Nothing to interact with.");
+        }
     }
 
 

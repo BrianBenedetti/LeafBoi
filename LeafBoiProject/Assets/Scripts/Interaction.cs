@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    [SerializeField]
-    protected bool NPC;
+    public bool NPC;
 
     [SerializeField]
     protected bool interactable;
@@ -19,10 +18,6 @@ public class Interaction : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (interactable)
-        {
-            print("This " + gameObject.name + " can be interacted with");
-        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -30,6 +25,7 @@ public class Interaction : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             interactable = true;
+            PlayerController.instance.interactable = this.gameObject;
         }
     }
 
@@ -38,6 +34,7 @@ public class Interaction : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             interactable = true;
+            PlayerController.instance.interactable = this.gameObject;
         }
     }
 
@@ -46,6 +43,7 @@ public class Interaction : MonoBehaviour
         if (other.gameObject.tag == "Player")
         {
             interactable = false;
+            PlayerController.instance.interactable = null;
         }
         
     }

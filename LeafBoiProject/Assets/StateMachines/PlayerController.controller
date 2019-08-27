@@ -451,12 +451,12 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -264607365837700996}
-    second:
-    - {fileID: 4411155946514638940}
   - first: {fileID: 1117362656127306053}
     second:
     - {fileID: 2601529316965093703}
+  - first: {fileID: -264607365837700996}
+    second:
+    - {fileID: 4411155946514638940}
   m_StateMachineBehaviours:
   - {fileID: -5337662470792914523}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
@@ -2277,12 +2277,12 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: -2136916333846451680}
-    second:
-    - {fileID: -7503318807880224319}
   - first: {fileID: -1381975383421947972}
     second:
     - {fileID: -5530410561603950432}
+  - first: {fileID: -2136916333846451680}
+    second:
+    - {fileID: -7503318807880224319}
   - first: {fileID: -2318397509649007537}
     second:
     - {fileID: -2173268004729702499}
@@ -5350,6 +5350,7 @@ AnimatorStateMachine:
   - {fileID: -1367669505582544061}
   - {fileID: -2109759750248499169}
   - {fileID: -3320990787391405061}
+  - {fileID: 7213445625022028213}
   m_EntryTransitions: []
   m_StateMachineTransitions: {}
   m_StateMachineBehaviours: []
@@ -5934,12 +5935,12 @@ AnimatorStateMachine:
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions:
-  - first: {fileID: 1079072737033795324}
-    second:
-    - {fileID: -1912961800022338279}
   - first: {fileID: -1523013124311545925}
     second:
     - {fileID: 2631309163405487100}
+  - first: {fileID: 1079072737033795324}
+    second:
+    - {fileID: -1912961800022338279}
   m_StateMachineBehaviours:
   - {fileID: 6324010800191764048}
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
@@ -6327,12 +6328,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
-  - m_Name: Cinematic
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 0}
   - m_Name: Pause
     m_Type: 4
     m_DefaultFloat: 0
@@ -6361,15 +6356,21 @@ AnimatorController:
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 0
+    m_DefaultBool: 1
     m_Controller: {fileID: 0}
   - m_Name: Normal
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
-    m_DefaultBool: 1
+    m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: Nature
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: Cinematic
     m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -11186,6 +11187,37 @@ AnimatorStateTransition:
   m_InterruptionSource: 0
   m_OrderedInterruption: 1
   m_CanTransitionToSelf: 1
+--- !u!1101 &7213445625022028213
+AnimatorStateTransition:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_Conditions:
+  - m_ConditionMode: 2
+    m_ConditionEvent: Blight
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Normal
+    m_EventTreshold: 0
+  - m_ConditionMode: 2
+    m_ConditionEvent: Nature
+    m_EventTreshold: 0
+  m_DstStateMachine: {fileID: 0}
+  m_DstState: {fileID: 5308222288642496112}
+  m_Solo: 0
+  m_Mute: 0
+  m_IsExit: 0
+  serializedVersion: 3
+  m_TransitionDuration: 0.25
+  m_TransitionOffset: 0
+  m_ExitTime: 0.75
+  m_HasExitTime: 0
+  m_HasFixedDuration: 1
+  m_InterruptionSource: 0
+  m_OrderedInterruption: 1
+  m_CanTransitionToSelf: 0
 --- !u!1101 &7227563412604208196
 AnimatorStateTransition:
   m_ObjectHideFlags: 3
