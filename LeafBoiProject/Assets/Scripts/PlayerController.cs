@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
@@ -51,7 +52,7 @@ public class PlayerController : MonoBehaviour
     protected float _dashMult;
 
     [SerializeField]
-    protected Animator anim;
+    protected Animator _anim;
 
     private void Awake()
     {
@@ -89,12 +90,12 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        _anim = GetComponent<Animator>();
     }
 
     private void FixedUpdate()
     {
-        anim.SetBool("Pause", pause);
+        _anim.SetBool("Pause", pause);
 
         if (!pause && !cinematicState)
         {
@@ -124,32 +125,32 @@ public class PlayerController : MonoBehaviour
         //Setting Velocity to different values
         if (_rb.velocity.y < -0.01f)
         {
-            anim.SetBool("Falling", true);
+            _anim.SetBool("Falling", true);
         }
 
         //Setting the Speed to different values to be used by the blend trees
         _magSpeed = new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude;
         _magSpeed = Mathf.Abs(_magSpeed);
 
-        anim.SetFloat("Speed", _magSpeed);
+        _anim.SetFloat("Speed", _magSpeed);
 
         //Setting the idle boolean according to whether movement is occurring
         if (_magSpeed > 0.1f)
         {
-            anim.SetBool("Idle", false);
+            _anim.SetBool("Idle", false);
         }
         else
         {
-            anim.SetBool("Idle", true);
+            _anim.SetBool("Idle", true);
         }
 
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
-        anim.SetBool("isGrounded", _grounded);
-        anim.SetBool("Gliding", _gliding);
+        _anim.SetBool("isGrounded", _grounded);
+        _anim.SetBool("Gliding", _gliding);
 
         if (_grounded)
         {
-            anim.SetBool("Falling", false);
+            _anim.SetBool("Falling", false);
         }
     }
 
@@ -209,7 +210,7 @@ public class PlayerController : MonoBehaviour
         if (_canDash && natureState)
         {
             _dashing = true;
-            anim.SetTrigger("Dash");
+            _anim.SetTrigger("Dash");
         }
     }
 
@@ -235,20 +236,31 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail an interaction are pressed.
     private void HandleInteraction()
     {
-        anim.SetTrigger("Interaction");
+        Interaction interactingObject = null;
+
+        _anim.SetTrigger("Interaction");
 
         if (interactable != null)
         {
+            interactingObject = interactable.GetComponent<Interaction>();
+
             print("Interacting with " + interactable.name);
 
-            if (interactable.GetComponent<Interaction>().NPC)
+            if (interactingObject.npc)
             {
                 print("This character is an NPC and therefore will cause cinematic to go active for a few seconds");
             }
-        }
-        else
-        {
-            print("Nothing to interact with.");
+
+            if (interactingObject.button)
+            {
+                ButtonManager buttonObject = interactable.GetComponent<ButtonManager>();
+                buttonObject.interactionHandler();
+            }
+
+            if (interactingObject.instrument)
+            {
+                print("Play Noise");
+            }
         }
     }
 
@@ -261,7 +273,7 @@ public class PlayerController : MonoBehaviour
             _grounded = true;
             _secondJump = true;
             _gliding = false;
-            anim.SetBool("Falling", false);
+            _anim.SetBool("Falling", false);
         }
     }
 
@@ -270,14 +282,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!_grounded && _secondJump && blightState)
         {
-            anim.SetTrigger("DoubleJump");
+            _anim.SetTrigger("DoubleJump");
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
             _secondJump = false;
         }
 
         if (_grounded)
         {
-            anim.SetTrigger("Jump");
+            _anim.SetTrigger("Jump");
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
             _grounded = false;
         }

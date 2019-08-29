@@ -4,21 +4,12 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
-    public bool NPC;
+    public bool npc;
+    public bool instrument;
+    public bool button;
 
     [SerializeField]
     protected bool interactable;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -47,4 +38,5 @@ public class Interaction : MonoBehaviour
         }
         
     }
+
 }
