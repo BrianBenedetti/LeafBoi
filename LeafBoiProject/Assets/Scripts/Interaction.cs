@@ -5,6 +5,8 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     public bool NPC;
+    public bool Button;
+    public bool Instrument;
 
     [SerializeField]
     protected bool interactable;

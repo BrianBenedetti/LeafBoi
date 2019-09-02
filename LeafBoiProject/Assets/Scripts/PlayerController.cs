@@ -75,6 +75,7 @@ public class PlayerController : MonoBehaviour
 
         _controls.Player.Movement.performed += context => _moveAxis = context.ReadValue<Vector2>();
         _controls.Player.Movement.performed += context => _playerAxis = context.ReadValue<Vector2>();
+        _controls.Player.Movement.performed += context => HandleTurn();
         _controls.Player.Movement.canceled += context => _moveAxis = Vector2.zero;
 
         _controls.Player.Interact.performed += context => HandleInteraction();
@@ -101,7 +102,11 @@ public class PlayerController : MonoBehaviour
             //Unfreezes player if not paused and only goes through these methods during unpaused state
             _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             AnimatorHandler();
-            PlayerFacing();
+
+            if (!anim.GetBool("Idle"))
+            {
+                PlayerFacing();
+            }
             MovementHandler();
         }
         else {
@@ -190,6 +195,11 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private void HandleTurn()
+    {
+        PlayerFacing();
+    }
+
     //Handles what happens when any of the buttons that entail a dash are pressed. Sets the pause bool to true
     private void HandlePause()
     {
@@ -239,12 +249,26 @@ public class PlayerController : MonoBehaviour
 
         if (interactable != null)
         {
+            Interaction interactableObject = interactable.GetComponent<Interaction>();
+
             print("Interacting with " + interactable.name);
 
             if (interactable.GetComponent<Interaction>().NPC)
             {
                 print("This character is an NPC and therefore will cause cinematic to go active for a few seconds");
             }
+
+            if (interactable.GetComponent<Interaction>().Button)
+            {
+                ButtonManager button = interactable.GetComponent<ButtonManager>();
+                button.interactionHandler();
+            }
+
+            if (interactable.GetComponent<Interaction>().Instrument)
+            {
+
+            }
+
         }
         else
         {
@@ -286,7 +310,7 @@ public class PlayerController : MonoBehaviour
     //Returns the quaternion angle that the player should be facing when they move.
     private void PlayerFacing()
     {
-        _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360;
+        if (_playerAxis.magnitude > 0.1f) { _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360; }
         Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
         transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
     }
