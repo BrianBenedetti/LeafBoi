@@ -33,7 +33,10 @@ public class PlayerController : MonoBehaviour
     private bool _gliding = false;
     [SerializeField]
     private bool _canDash = true;
+    [SerializeField]
+    private DialogueManager _dManager;
     private bool _dashing;
+    private bool _interacting;
 
     private float _facingAngle;
     private float _playerRotation;
@@ -54,6 +57,11 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     protected Animator anim;
+
+    public void endDialogue()
+    {
+        _interacting = false;
+    }
 
     private void Awake()
     {
@@ -93,6 +101,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         anim = GetComponent<Animator>();
+        _interacting = false;
     }
 
     private void FixedUpdate()
@@ -258,7 +267,15 @@ public class PlayerController : MonoBehaviour
 
             if (interactable.GetComponent<Interaction>().NPC)
             {
-                interactable.GetComponent<NPCDialogueTrigger>().TriggerDialogue();
+                if (!_interacting)
+                {
+                    interactable.GetComponent<NPCDialogueTrigger>().TriggerDialogue();
+                    _interacting = true;
+                }
+                else {
+                    _dManager.DisplayNextSentence();
+                    Debug.Log("Uhh This doing things fam");
+                }
             }
 
             if (interactable.GetComponent<Interaction>().Button)

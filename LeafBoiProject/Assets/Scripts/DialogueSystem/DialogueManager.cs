@@ -15,10 +15,12 @@ public class DialogueManager : MonoBehaviour{
 
     private InputMaster _controls;
 
+    [SerializeField]
+    private GameObject player;
+
 
     // Start is called before the first frame update
     void Start(){
-        
         sentences = new Queue<string>();
     }
 
@@ -64,5 +66,6 @@ public class DialogueManager : MonoBehaviour{
     void EndDialogue(){
 
         animator.SetBool("IsOpen", false);
+        player.GetComponent<PlayerController>().endDialogue();
     }
 }
