@@ -17,9 +17,13 @@ public class PlayerMovement : MonoBehaviour
 
     private bool _grounded = true;
     private bool _secondJump = true;
+
     [SerializeField]
     private bool _gliding = false;
+
+    [SerializeField]
     private bool _canDash = true;
+
     private bool _dashing;
 
     private float _facingAngle;
@@ -104,6 +108,8 @@ public class PlayerMovement : MonoBehaviour
         if (_canDash)
         {
             _dashing = true;
+
+            _canDash = false;
         }
     }
 
@@ -135,11 +141,12 @@ public class PlayerMovement : MonoBehaviour
     //Checks if player is in contact with ground do decide whether they can jump again.
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.tag != null)
         {
             _grounded = true;
             _secondJump = true;
             _gliding = false;
+            _canDash = true;
         }
     }
 

@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 103406621}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -241,7 +241,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 103406620}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -518,7 +518,7 @@ GameObject:
   - component: {fileID: 619509288}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -545,7 +545,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 619509287}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -628,7 +628,7 @@ GameObject:
   - component: {fileID: 900356194}
   m_Layer: 0
   m_Name: NPC
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -670,7 +670,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 900356187}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.5
@@ -768,7 +768,7 @@ GameObject:
   - component: {fileID: 1103883671}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -795,7 +795,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1103883670}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -876,7 +876,7 @@ GameObject:
   - component: {fileID: 1229932062}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Platform
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -903,7 +903,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1229932061}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1358,7 +1358,7 @@ GameObject:
   - component: {fileID: 1754626492}
   m_Layer: 0
   m_Name: Button (1)
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1416,7 +1416,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1754626484}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.5
@@ -1547,7 +1547,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothing: 5
   speed: 4.2
-  jumpForce: 150
+  jumpForce: 250
   pause: 0
   interactable: {fileID: 0}
   normalState: 0
@@ -1556,7 +1556,8 @@ MonoBehaviour:
   cinematicState: 0
   interact: {fileID: 42743361}
   _gliding: 0
-  _jumpHeight: 1
+  _canDash: 1
+  _jumpHeight: 1.5
   _dashLimit: 0.15
   _maxFallVelocity: 1.5
   _dashMult: 10
@@ -1642,7 +1643,7 @@ GameObject:
   - component: {fileID: 1922026185}
   m_Layer: 0
   m_Name: Button
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1701,7 +1702,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922026177}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.5
@@ -1951,7 +1952,7 @@ GameObject:
   - component: {fileID: 2085720923}
   m_Layer: 0
   m_Name: Drum
-  m_TagString: Untagged
+  m_TagString: Object
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1993,7 +1994,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2085720916}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 1.5
