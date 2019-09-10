@@ -31,6 +31,7 @@ public class PlayerController : MonoBehaviour
     private bool _secondJump = true;
     [SerializeField]
     private bool _gliding = false;
+    [SerializeField]
     private bool _canDash = true;
     private bool _dashing;
 
@@ -190,9 +191,9 @@ public class PlayerController : MonoBehaviour
         }
 
         //Makes fall feel faster in order to be able to distinguish between normal fall and glide
-        if (!_gliding && _rb.velocity.y < 0)
+        if (!_gliding && _rb.velocity.y < 0.1)
         {
-            _rb.velocity += Vector3.up * Physics.gravity.y * (2.5f - 1) * Time.deltaTime;
+            _rb.velocity += Vector3.up * Physics.gravity.y * 1.5f * (2.5f - 1) * Time.deltaTime;
         }
     }
 
@@ -221,6 +222,7 @@ public class PlayerController : MonoBehaviour
         {
             _dashing = true;
             anim.SetTrigger("Dash");
+            _canDash = false;
         }
     }
 
@@ -279,13 +281,14 @@ public class PlayerController : MonoBehaviour
 
 
     //Checks if player is in contact with ground do decide whether they can jump again.
-    private void OnCollisionEnter(Collision collision)
+    private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor")
+        if (collision.gameObject.tag != null)
         {
             _grounded = true;
             _secondJump = true;
             _gliding = false;
+            _canDash = true;
             anim.SetBool("Falling", false);
         }
     }
