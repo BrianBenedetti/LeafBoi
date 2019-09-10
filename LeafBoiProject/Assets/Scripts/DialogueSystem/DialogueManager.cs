@@ -16,7 +16,7 @@ public class DialogueManager : MonoBehaviour{
     private InputMaster _controls;
 
     [SerializeField]
-    private GameObject player;
+    protected GameObject player;
 
 
     // Start is called before the first frame update
