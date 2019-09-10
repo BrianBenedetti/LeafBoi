@@ -100,13 +100,13 @@ MonoBehaviour:
   speed: 4.2
   jumpForce: 150
   pause: 0
+  InDialogue: 0
   interactable: {fileID: 0}
-  normalState: 0
-  blightState: 0
-  natureState: 0
-  cinematicState: 0
+  state: 0
   interact: {fileID: 0}
   _gliding: 0
+  _canDash: 1
+  _dManager: {fileID: 0}
   _jumpHeight: 1
   _dashLimit: 0.15
   _maxFallVelocity: 1.5

@@ -15,10 +15,7 @@ public class PlayerController : MonoBehaviour
     public bool InDialogue;
 
     public GameObject interactable;
-    public bool normalState = false;
-    public bool blightState = false;
-    public bool natureState = false;
-    public bool cinematicState = false;
+    public int state = 0;
 
     public Text interact;
 
@@ -28,6 +25,7 @@ public class PlayerController : MonoBehaviour
     private InputMaster _controls;
 
     private bool _grounded = true;
+    [SerializeField]
     private bool _secondJump = true;
     [SerializeField]
     private bool _gliding = false;
@@ -108,7 +106,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("Pause", pause);
 
-        if (!pause && !cinematicState)
+        if (!pause && !state.Equals(3))
         {
             //Unfreezes player if not paused and only goes through these methods during unpaused state
             _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
@@ -204,6 +202,11 @@ public class PlayerController : MonoBehaviour
         {
             _rb.velocity += Vector3.up * Physics.gravity.y * 1.5f * (2.5f - 1) * Time.deltaTime;
         }
+
+        if (state.Equals(0) || state.Equals(2))
+        {
+            _secondJump = false;
+        }
     }
 
     private void HandleTurn()
@@ -227,7 +230,7 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a dash are pressed.
     private void HandleDash()
     {
-        if (_canDash && natureState)
+        if (_canDash && state.Equals(2))
         {
             _dashing = true;
             anim.SetTrigger("Dash");
@@ -238,7 +241,7 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a glide are pressed.
     private void HandleGlide()
     {
-        if (!_grounded && natureState)
+        if (!_grounded && state.Equals(2))
         {
             _gliding = true;
         }
@@ -296,7 +299,7 @@ public class PlayerController : MonoBehaviour
     //Checks if player is in contact with ground do decide whether they can jump again.
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag != null)
+        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Platform" )
         {
             _grounded = true;
             _secondJump = true;
@@ -309,7 +312,7 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a jump are pressed.
     private void HandleJump()
     {
-        if (!_grounded && _secondJump && blightState && !_interacting)
+        if (!_grounded && _secondJump && !_interacting && state.Equals(1))
         {
             anim.SetTrigger("DoubleJump");
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
@@ -320,7 +323,7 @@ public class PlayerController : MonoBehaviour
         {
             anim.SetTrigger("Jump");
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
-            _grounded = false;
+            StartCoroutine(setGrounded());
         }
 
         if (_interacting)
@@ -341,6 +344,12 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _controls.Enable();
+    }
+
+    private IEnumerator setGrounded()
+    {
+        yield return new WaitForSeconds(0.01f);
+        _grounded = false;
     }
 
     //Disables controls when this object is enabled

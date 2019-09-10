@@ -18,24 +18,22 @@ public class PrototypeTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            anim.SetBool("Normal", false);
-            anim.SetBool("Blight", false);
-            anim.SetBool("Nature", false);
+            anim.SetInteger("State", 3);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            anim.SetBool("Normal", true);
+            anim.SetInteger("State", 0);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            anim.SetBool("Blight", true);
+            anim.SetInteger("State", 1);
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            anim.SetBool("Nature", true);
+            anim.SetInteger("State", 2);
         }
     }
 }

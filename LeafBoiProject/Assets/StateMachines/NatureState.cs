@@ -7,7 +7,7 @@ public class NatureState : StateMachineBehaviour
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerController.instance.natureState = true;
+        PlayerController.instance.state = 2;
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
@@ -19,7 +19,6 @@ public class NatureState : StateMachineBehaviour
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerController.instance.natureState = false;
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine

@@ -7,7 +7,7 @@ public class BlightState : StateMachineBehaviour
     // OnStateEnter is called before OnStateEnter is called on any state inside this state machine
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerController.instance.blightState = true;
+        PlayerController.instance.state = 1;
     }
 
     // OnStateUpdate is called before OnStateUpdate is called on any state inside this state machine
@@ -19,7 +19,6 @@ public class BlightState : StateMachineBehaviour
     // OnStateExit is called before OnStateExit is called on any state inside this state machine
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        PlayerController.instance.blightState = false;
     }
 
     // OnStateMove is called before OnStateMove is called on any state inside this state machine
