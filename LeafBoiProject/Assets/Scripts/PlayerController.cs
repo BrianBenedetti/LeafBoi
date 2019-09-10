@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private bool _canDash = true;
     [SerializeField]
-    private DialogueManager _dManager;
+    protected DialogueManager _dManager;
     private bool _dashing;
     private bool _interacting;
 
@@ -272,10 +272,6 @@ public class PlayerController : MonoBehaviour
                     interactable.GetComponent<NPCDialogueTrigger>().TriggerDialogue();
                     _interacting = true;
                 }
-                else {
-                    _dManager.DisplayNextSentence();
-                    Debug.Log("Uhh This doing things fam");
-                }
             }
 
             if (interactable.GetComponent<Interaction>().Button)
@@ -313,18 +309,23 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a jump are pressed.
     private void HandleJump()
     {
-        if (!_grounded && _secondJump && blightState)
+        if (!_grounded && _secondJump && blightState && !_interacting)
         {
             anim.SetTrigger("DoubleJump");
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
             _secondJump = false;
         }
 
-        if (_grounded)
+        if (_grounded && !_interacting)
         {
             anim.SetTrigger("Jump");
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
             _grounded = false;
+        }
+
+        if (_interacting)
+        {
+            _dManager.DisplayNextSentence();
         }
     }
 
