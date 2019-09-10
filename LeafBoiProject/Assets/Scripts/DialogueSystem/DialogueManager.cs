@@ -13,6 +13,9 @@ public class DialogueManager : MonoBehaviour{
 
     private Queue<string> sentences;
 
+    private InputMaster _controls;
+
+
     // Start is called before the first frame update
     void Start(){
         

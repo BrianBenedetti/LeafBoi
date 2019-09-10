@@ -12,6 +12,7 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
 
     public bool pause;
+    public bool InDialogue;
 
     public GameObject interactable;
     public bool normalState = false;
@@ -255,7 +256,7 @@ public class PlayerController : MonoBehaviour
 
             if (interactable.GetComponent<Interaction>().NPC)
             {
-                print("This character is an NPC and therefore will cause cinematic to go active for a few seconds");
+                interactable.GetComponent<NPCDialogueTrigger>().TriggerDialogue();
             }
 
             if (interactable.GetComponent<Interaction>().Button)
