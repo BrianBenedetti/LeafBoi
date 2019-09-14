@@ -219,8 +219,8 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 962907882}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &160362482
-BoxCollider:
+--- !u!136 &160362482
+CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -228,24 +228,11 @@ BoxCollider:
   m_GameObject: {fileID: 160362480}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 2
-  m_Size: {x: 1.6029943, y: 7.5013375, z: 2.266276}
-  m_Center: {x: -0.60470515, y: 4.539942, z: -0.1204795}
---- !u!64 &160362483
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 160362480}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 4966163413032766920, guid: 118b7e530867f2543a7124c84a80a0a2, type: 3}
+  m_Enabled: 1
+  m_Radius: 1.4583296
+  m_Height: 8.305489
+  m_Direction: 1
+  m_Center: {x: -0.1966387, y: 4.268777, z: -0.039886832}
 --- !u!1 &166120213
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,27 +403,32 @@ PrefabInstance:
     - target: {fileID: 8265800022630091556, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
       propertyPath: m_Name
-      value: Sprig (1)
+      value: Sprig
       objectReference: {fileID: 0}
     - target: {fileID: 8265800022630091556, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8265800023103856906, guid: bd69fc220ccb3714dafcaeb5425a71c4,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8265800022630091554, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.1861589
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8265800022630091554, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.44
+      value: -0.29
       objectReference: {fileID: 0}
     - target: {fileID: 8265800022630091554, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 2.5732346
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8265800022630091554, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
@@ -488,6 +480,16 @@ PrefabInstance:
       propertyPath: _dManager
       value: 
       objectReference: {fileID: 1337346470}
+    - target: {fileID: 8265800022630091558, guid: bd69fc220ccb3714dafcaeb5425a71c4,
+        type: 3}
+      propertyPath: _secondJump
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8265800022630091558, guid: bd69fc220ccb3714dafcaeb5425a71c4,
+        type: 3}
+      propertyPath: _canDash
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8265800022630091555, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
       propertyPath: m_Size.x
@@ -563,13 +565,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
-    - target: {fileID: 8265800023103856906, guid: bd69fc220ccb3714dafcaeb5425a71c4,
+    - target: {fileID: 8265800022630091552, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
-      propertyPath: m_IsActive
-      value: 0
+      propertyPath: m_AngularDrag
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 8265800023103856951, guid: bd69fc220ccb3714dafcaeb5425a71c4, type: 3}
+    - {fileID: 8265800022630091555, guid: bd69fc220ccb3714dafcaeb5425a71c4, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: bd69fc220ccb3714dafcaeb5425a71c4, type: 3}
 --- !u!1 &459504720
 GameObject:
@@ -1438,7 +1441,7 @@ PrefabInstance:
     - target: {fileID: -927199367670048503, guid: 118b7e530867f2543a7124c84a80a0a2,
         type: 3}
       propertyPath: m_Name
-      value: Sprig
+      value: Sprig_model
       objectReference: {fileID: 0}
     - target: {fileID: -6057140222963153312, guid: 118b7e530867f2543a7124c84a80a0a2,
         type: 3}
@@ -1519,6 +1522,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.z
       value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: -1027115589269005443, guid: 118b7e530867f2543a7124c84a80a0a2,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 118b7e530867f2543a7124c84a80a0a2, type: 3}
