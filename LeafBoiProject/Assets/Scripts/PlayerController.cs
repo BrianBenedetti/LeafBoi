@@ -1,10 +1,17 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
+    public enum State
+    {
+        Normal,
+        Tired,
+        Blight,
+        Nature
+    }
+
     public static PlayerController instance;
 
     public float smoothing;
@@ -12,10 +19,11 @@ public class PlayerController : MonoBehaviour
     public float jumpForce;
 
     public bool pause;
-    public bool InDialogue;
+    public bool inDialogue;
 
     public GameObject interactable;
     public int state = 0;
+    public State currentState;
 
     public Text interact;
 
@@ -106,7 +114,7 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("Pause", pause);
 
-        if (!pause && !state.Equals(3))
+        if (!pause && currentState != State.Blight)
         {
             //Unfreezes player if not paused and only goes through these methods during unpaused state
             _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
@@ -123,13 +131,7 @@ public class PlayerController : MonoBehaviour
             _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }
 
-        if (interactable != null)
-        {
-            interact.gameObject.SetActive(true);
-        }
-        else {
-            interact.gameObject.SetActive(false);
-        }
+        interact.gameObject.SetActive(interactable != null);
     }
 
     //Changes animation states when needed, depending on the current state of the player.
@@ -161,10 +163,8 @@ public class PlayerController : MonoBehaviour
         anim.SetBool("isGrounded", _grounded);
         anim.SetBool("Gliding", _gliding);
 
-        if (_grounded)
-        {
-            anim.SetBool("Falling", false);
-        }
+        anim.SetBool("Falling", !_grounded);
+
     }
 
     //Handles the movement of the player depending on their current state and any actions that are taking place.
@@ -175,8 +175,7 @@ public class PlayerController : MonoBehaviour
         {
             _rb.velocity = new Vector3(_moveAxis.x * speed, _rb.velocity.y, _moveAxis.y * speed);
         }
-
-        if (_dashing)
+        else
         {
             _dashTime -= Time.deltaTime;
             _rb.velocity = transform.right * speed * _dashMult;
@@ -191,7 +190,7 @@ public class PlayerController : MonoBehaviour
         //If the player holds the button for gliding the players max fall velocity will be reduced (Should probably change this to add a force, will work out specifics later after discussing) 
         if (_gliding)
         {
-            if (!(_rb.velocity.y > -1f))
+            if (_rb.velocity.y < -1f)
             {
                 _rb.velocity += Vector3.down * 1.5f * Physics.gravity.y * Time.deltaTime;
             }
