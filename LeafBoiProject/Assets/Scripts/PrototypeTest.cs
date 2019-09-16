@@ -7,10 +7,12 @@ public class PrototypeTest : MonoBehaviour
     [SerializeField]
     protected Animator anim;
 
+    [SerializeField]
+    protected PlayerController player;
+
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -18,22 +20,30 @@ public class PrototypeTest : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Alpha0))
         {
-            anim.SetInteger("State", 3);
+            anim.SetInteger("Powers", 3);
+            anim.SetBool("Cinematic", true);
+            player.state = 3;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            anim.SetInteger("State", 0);
+            anim.SetInteger("Powers", 0);
+            anim.SetBool("Cinematic", false);
+            player.state = 0;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            anim.SetInteger("State", 1);
+            anim.SetInteger("Powers", 1);
+            anim.SetBool("Cinematic", false);
+            player.state = 1;
         }
 
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            anim.SetInteger("State", 2);
+            anim.SetInteger("Powers", 2);
+            anim.SetBool("Cinematic", false);
+            player.state = 2;
         }
     }
 }

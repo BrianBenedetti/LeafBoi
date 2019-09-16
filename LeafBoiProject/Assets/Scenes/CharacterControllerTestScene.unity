@@ -1527,12 +1527,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885330929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 223eade3743e94342a94456d9a970aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1885330932}
+  player: {fileID: 1885330931}
 --- !u!114 &1885330931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1540,7 +1541,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1885330929}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b81e58f75dda6274d8ee9885b30dc019, type: 3}
   m_Name: 
@@ -1552,7 +1553,6 @@ MonoBehaviour:
   inDialogue: 0
   interactable: {fileID: 0}
   state: 0
-  currentState: 0
   interact: {fileID: 42743361}
   _secondJump: 1
   _gliding: 0
@@ -1562,7 +1562,7 @@ MonoBehaviour:
   _dashLimit: 0.15
   _maxFallVelocity: 1.5
   _dashMult: 10
-  anim: {fileID: 0}
+  anim: {fileID: 1885330932}
 --- !u!95 &1885330932
 Animator:
   serializedVersion: 3

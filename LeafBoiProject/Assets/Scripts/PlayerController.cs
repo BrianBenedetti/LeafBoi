@@ -4,13 +4,6 @@ using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
-    public enum State
-    {
-        Normal,
-        Tired,
-        Blight,
-        Nature
-    }
 
     public static PlayerController instance;
 
@@ -23,7 +16,6 @@ public class PlayerController : MonoBehaviour
 
     public GameObject interactable;
     public int state = 0;
-    public State currentState;
 
     public Text interact;
 
@@ -106,7 +98,6 @@ public class PlayerController : MonoBehaviour
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
         _interacting = false;
     }
 
@@ -114,13 +105,13 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("Pause", pause);
 
-        if (!pause && currentState != State.Blight)
+        if (!pause)
         {
             //Unfreezes player if not paused and only goes through these methods during unpaused state
             _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             AnimatorHandler();
 
-            if (!anim.GetBool("Idle"))
+            if (anim.GetFloat("Speed") > 0.1f)
             {
                 PlayerFacing();
             }
@@ -138,9 +129,14 @@ public class PlayerController : MonoBehaviour
     private void AnimatorHandler()
     {
         //Setting Velocity to different values
-        if (_rb.velocity.y < -0.01f)
+        if (_rb.velocity.y < -0.001f)
         {
             anim.SetBool("Falling", true);
+        }
+
+        if (anim.GetBool("Tired") && state != 3)
+        {
+            state = 0;
         }
 
         //Setting the Speed to different values to be used by the blend trees
@@ -149,19 +145,9 @@ public class PlayerController : MonoBehaviour
 
         anim.SetFloat("Speed", _magSpeed);
 
-        //Setting the idle boolean according to whether movement is occurring
-        if (_magSpeed > 0.1f)
-        {
-            anim.SetBool("Idle", false);
-        }
-        else
-        {
-            anim.SetBool("Idle", true);
-        }
-
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
-        anim.SetBool("isGrounded", _grounded);
-        anim.SetBool("Gliding", _gliding);
+        anim.SetBool("Grounded", _grounded);
+        anim.SetBool("Glide", _gliding);
 
         anim.SetBool("Falling", !_grounded);
 
