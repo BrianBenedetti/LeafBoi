@@ -1464,6 +1464,11 @@ PrefabInstance:
       propertyPath: angleOffset
       value: -90
       objectReference: {fileID: 0}
+    - target: {fileID: 8265800022630091558, guid: bd69fc220ccb3714dafcaeb5425a71c4,
+        type: 3}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 8265800022630091555, guid: bd69fc220ccb3714dafcaeb5425a71c4,
         type: 3}
       propertyPath: m_Size.x

@@ -181,8 +181,6 @@ public class PlayerController : MonoBehaviour
 
             _moveDir = forward * _moveAxis.y + right * _moveAxis.x;
 
-            print("DesiredDire"+_moveDir);
-
             _rb.velocity = new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed);
         }
         else
@@ -344,8 +342,8 @@ public class PlayerController : MonoBehaviour
     //Returns the quaternion angle that the player should be facing when they move.
     private void PlayerFacing()
     {
-        if (_playerAxis.magnitude > 0.1f) { _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360; }
-        Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
+        //if (_playerAxis.magnitude > 0.1f) { _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360; }
+        //Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
         //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, _angleOffset, 0) , Time.deltaTime * smoothing);
     }
