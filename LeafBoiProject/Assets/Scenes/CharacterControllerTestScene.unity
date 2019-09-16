@@ -1532,7 +1532,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 223eade3743e94342a94456d9a970aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
+  anim: {fileID: 1885330932}
+  player: {fileID: 1885330931}
 --- !u!114 &1885330931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1549,19 +1550,19 @@ MonoBehaviour:
   speed: 4.2
   jumpForce: 250
   pause: 0
+  inDialogue: 0
   interactable: {fileID: 0}
-  normalState: 0
-  blightState: 0
-  natureState: 0
-  cinematicState: 0
+  state: 0
   interact: {fileID: 42743361}
+  _secondJump: 1
   _gliding: 0
   _canDash: 1
+  _dManager: {fileID: 0}
   _jumpHeight: 1.5
   _dashLimit: 0.15
   _maxFallVelocity: 1.5
   _dashMult: 10
-  anim: {fileID: 0}
+  anim: {fileID: 1885330932}
 --- !u!95 &1885330932
 Animator:
   serializedVersion: 3
@@ -1572,7 +1573,7 @@ Animator:
   m_GameObject: {fileID: 1885330929}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8635210f25e1b324796ce67004db3d22, type: 2}
+  m_Controller: {fileID: 9100000, guid: 46ae3788a467a624d9518866f55a25f1, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
