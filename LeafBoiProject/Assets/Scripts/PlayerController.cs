@@ -26,11 +26,11 @@ public class PlayerController : MonoBehaviour
 
     private bool _grounded = true;
     [SerializeField]
-    private bool _secondJump = true;
+    protected bool _secondJump = true;
     [SerializeField]
-    private bool _gliding = false;
+    protected bool _gliding = false;
     [SerializeField]
-    private bool _canDash = true;
+    protected bool _canDash = true;
     [SerializeField]
     protected DialogueManager _dManager;
     private bool _dashing;
@@ -40,6 +40,9 @@ public class PlayerController : MonoBehaviour
     private float _playerRotation;
     private float _dashTime;
     private float _magSpeed;
+    private bool _blockRotationPlayer;
+    private Camera _cam;
+    private Vector3 _moveDir;
 
     [SerializeField]
     protected float _jumpHeight;
@@ -55,6 +58,8 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField]
     protected Animator anim;
+
+    private float _angleOffset = -90;
 
     public void endDialogue()
     {
@@ -99,6 +104,7 @@ public class PlayerController : MonoBehaviour
     private void Start()
     {
         _interacting = false;
+        _cam = Camera.main;
     }
 
     private void FixedUpdate()
@@ -122,7 +128,10 @@ public class PlayerController : MonoBehaviour
             _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
         }
 
-        interact.gameObject.SetActive(interactable != null);
+        if (interact != null)
+        {
+            interact.gameObject.SetActive(interactable != null);
+        }   
     }
 
     //Changes animation states when needed, depending on the current state of the player.
@@ -148,7 +157,6 @@ public class PlayerController : MonoBehaviour
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
         anim.SetBool("Grounded", _grounded);
         anim.SetBool("Glide", _gliding);
-
         anim.SetBool("Falling", !_grounded);
 
     }
@@ -159,7 +167,23 @@ public class PlayerController : MonoBehaviour
         //Handles how the dash works, so if dash is pressed player is rocketed forward by a set amount of speed that wont cause them to clip into walls
         if (!_dashing)
         {
-            _rb.velocity = new Vector3(_moveAxis.x * speed, _rb.velocity.y, _moveAxis.y * speed);
+            Vector3 forward = _cam.transform.forward;
+            Vector3 right = _cam.transform.right;
+
+            forward.y = 0f;
+            right.y = 0f;
+
+            forward.Normalize();
+            right.Normalize();
+
+            Vector3 inputX = new Vector3(_moveAxis.x, 0f, 0f);
+            Vector3 inputZ = new Vector3(0f, 0f, _moveAxis.y);
+
+            _moveDir = forward * _moveAxis.y + right * _moveAxis.x;
+
+            print("DesiredDire"+_moveDir);
+
+            _rb.velocity = new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed);
         }
         else
         {
@@ -322,7 +346,8 @@ public class PlayerController : MonoBehaviour
     {
         if (_playerAxis.magnitude > 0.1f) { _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360; }
         Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
-        transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
+        //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, _angleOffset, 0) , Time.deltaTime * smoothing);
     }
 
     //Enables controls when this object is enabled
