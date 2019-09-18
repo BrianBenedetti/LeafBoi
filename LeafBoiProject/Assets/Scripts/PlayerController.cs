@@ -40,6 +40,7 @@ public class PlayerController : MonoBehaviour
     private float _playerRotation;
     private float _dashTime;
     private float _magSpeed;
+    private float _magYSpeed;
     private bool _blockRotationPlayer;
     private Camera _cam;
     private Vector3 _moveDir;
@@ -153,6 +154,7 @@ public class PlayerController : MonoBehaviour
         _magSpeed = Mathf.Abs(_magSpeed);
 
         anim.SetFloat("Speed", _magSpeed);
+        anim.SetFloat("YSpeed",_magYSpeed);
 
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
         anim.SetBool("Grounded", _grounded);
@@ -172,6 +174,8 @@ public class PlayerController : MonoBehaviour
 
             forward.y = 0f;
             right.y = 0f;
+
+            _magYSpeed = _rb.velocity.y;
 
             forward.Normalize();
             right.Normalize();
