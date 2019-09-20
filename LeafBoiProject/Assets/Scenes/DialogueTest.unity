@@ -3775,6 +3775,16 @@ PrefabInstance:
       propertyPath: _dManager
       value: 
       objectReference: {fileID: 1337346470}
+    - target: {fileID: 1223156292520096461, guid: a4f474de89fbcf74cb277cd3f517ade4,
+        type: 3}
+      propertyPath: speed
+      value: 6.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1223156292520096461, guid: a4f474de89fbcf74cb277cd3f517ade4,
+        type: 3}
+      propertyPath: _jumpHeight
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a4f474de89fbcf74cb277cd3f517ade4, type: 3}
 --- !u!4 &8265800022302538722 stripped

@@ -33,6 +33,8 @@ public class PlayerController : MonoBehaviour
     protected bool _canDash = true;
     [SerializeField]
     protected DialogueManager _dManager;
+    [SerializeField]
+    protected bool _jumping;
     private bool _dashing;
     private bool _interacting;
 
@@ -144,6 +146,11 @@ public class PlayerController : MonoBehaviour
             anim.SetBool("Falling", true);
         }
 
+        if (_rb.velocity.y > 0)
+        {
+            anim.SetBool("Jumping", true);   
+        }
+
         if (anim.GetBool("Tired") && state != 3)
         {
             state = 0;
@@ -159,7 +166,6 @@ public class PlayerController : MonoBehaviour
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
         anim.SetBool("Grounded", _grounded);
         anim.SetBool("Glide", _gliding);
-        anim.SetBool("Falling", !_grounded);
 
     }
 
@@ -271,7 +277,6 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail an interaction are pressed.
     private void HandleInteraction()
     {
-        anim.SetTrigger("Interaction");
 
         if (interactable != null)
         {
@@ -292,6 +297,7 @@ public class PlayerController : MonoBehaviour
             {
                 ButtonManager button = interactable.GetComponent<ButtonManager>();
                 button.interactionHandler();
+                anim.SetTrigger("Interaction");
             }
 
             if (interactable.GetComponent<Interaction>().Instrument)
@@ -317,6 +323,7 @@ public class PlayerController : MonoBehaviour
             _gliding = false;
             _canDash = true;
             anim.SetBool("Falling", false);
+            anim.SetBool("Jumping", false);
         }
     }
 
