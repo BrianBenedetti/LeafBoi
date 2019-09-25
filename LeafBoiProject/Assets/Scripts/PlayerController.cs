@@ -35,7 +35,10 @@ public class PlayerController : MonoBehaviour
     protected DialogueManager _dManager;
     [SerializeField]
     protected bool _jumping;
-    private bool _dashing;
+    [SerializeField]
+    protected bool _dashing;
+    [SerializeField]
+    protected bool _dJumping;
     private bool _interacting;
 
     private float _facingAngle;
@@ -114,8 +117,8 @@ public class PlayerController : MonoBehaviour
     {
         anim.SetBool("Pause", pause);
 
-        if (!pause)
-        {
+        //if (!pause)
+        //{
             //Unfreezes player if not paused and only goes through these methods during unpaused state
             _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             AnimatorHandler();
@@ -125,11 +128,11 @@ public class PlayerController : MonoBehaviour
                 PlayerFacing();
             }
             MovementHandler();
-        }
-        else {
-            //Freezes player based on constraints during pause
-            _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-        }
+        //}
+        //else {
+        //    //Freezes player based on constraints during pause
+        //    _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
+        //}
 
         if (interact != null)
         {
@@ -250,7 +253,7 @@ public class PlayerController : MonoBehaviour
         if (_canDash && state.Equals(2))
         {
             _dashing = true;
-            anim.SetTrigger("Dash");
+            anim.SetBool("Dash", true);
             _canDash = false;
         }
     }
@@ -324,6 +327,8 @@ public class PlayerController : MonoBehaviour
             _canDash = true;
             anim.SetBool("Falling", false);
             anim.SetBool("Jumping", false);
+            anim.SetBool("Dash", false);
+            anim.SetBool("DoubleJump", false);
         }
     }
 
@@ -332,7 +337,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!_grounded && _secondJump && !_interacting && state.Equals(1))
         {
-            anim.SetTrigger("DoubleJump");
+            anim.SetBool("DoubleJump", true);
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
             _secondJump = false;
         }
