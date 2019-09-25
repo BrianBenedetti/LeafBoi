@@ -50,6 +50,7 @@ public class PlayerController : MonoBehaviour
     private Camera _cam;
     private Vector3 _moveDir;
 
+
     [SerializeField]
     protected float _jumpHeight;
 
@@ -144,7 +145,7 @@ public class PlayerController : MonoBehaviour
     private void AnimatorHandler()
     {
         //Setting Velocity to different values
-        if (_rb.velocity.y < -0.001f)
+        if (_rb.velocity.y < -Mathf.Epsilon )
         {
             anim.SetBool("Falling", true);
         }
