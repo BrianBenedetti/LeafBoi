@@ -116,7 +116,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        anim.SetBool("Pause", pause);
+        //anim.SetBool("Pause", pause);
 
         //if (!pause)
         //{
@@ -345,7 +345,6 @@ public class PlayerController : MonoBehaviour
 
         if (_grounded && !_interacting)
         {
-            anim.SetTrigger("Jump");
             _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
             StartCoroutine(setGrounded());
         }
