@@ -7,6 +7,8 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] protected PauseMenuTraverse pmt;
+    [SerializeField] protected GameObject controls;
+    [SerializeField] protected GameObject options;
 
     public bool isPaused = false;
     public bool secondMenuOpen = false;
@@ -57,6 +59,8 @@ public class PauseMenu : MonoBehaviour
 
     public void CloseSecondMenu() {
         secondMenuOpen = false;
+        controls.SetActive(false);
+        options.SetActive(false);
     }
 
     private void HandlePause()

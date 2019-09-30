@@ -10,8 +10,12 @@ public class PauseMenuTraverse : MonoBehaviour
     [SerializeField] protected float transitionLimit;
     [SerializeField] protected PauseMenu pause;
 
+    [SerializeField] protected GameObject controlPanel;
+    [SerializeField] protected GameObject optionsPanel;
+
     private InputMaster _controls;
 
+    private bool _pauseActive;
     private bool _canChange = true;
     private Vector2 _moveAxis;
     private int _index = 0;
@@ -43,27 +47,30 @@ public class PauseMenuTraverse : MonoBehaviour
 
     private void HandleTraversal()
     {
-        if (_moveAxis.y < 0 && _canChange)
+        if (_pauseActive)
         {
-            _index++;
-            if (_index > buttons.Length - 1)
+            if (_moveAxis.y < 0 && _canChange)
             {
-                _index = 0;
-            }
-            buttons[_index].Select();
-            _canChange = false;
-        }
-
-        if(_moveAxis.y > 0 && _canChange)
-        {
-            _index--;
-            if (_index < 0)
-            {
-                _index = buttons.Length - 1;
+                _index++;
+                if (_index > buttons.Length - 1)
+                {
+                    _index = 0;
+                }
+                buttons[_index].Select();
+                _canChange = false;
             }
 
-            buttons[_index].Select();
-            _canChange = false;
+            if (_moveAxis.y > 0 && _canChange)
+            {
+                _index--;
+                if (_index < 0)
+                {
+                    _index = buttons.Length - 1;
+                }
+
+                buttons[_index].Select();
+                _canChange = false;
+            }
         }
     }
 
@@ -79,6 +86,15 @@ public class PauseMenuTraverse : MonoBehaviour
                 _canChange = true;
                 _transitionTime = 0;
             }
+        }
+
+        if (!optionsPanel.activeSelf && !controlPanel.activeSelf)
+        {
+            _pauseActive = true;
+        }
+        else
+        {
+            _pauseActive = false;
         }
 
     }
