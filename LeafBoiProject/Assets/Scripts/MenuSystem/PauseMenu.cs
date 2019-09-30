@@ -8,8 +8,8 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] protected PauseMenuTraverse pmt;
 
-    public static bool isPaused = false;
-    public static bool secondMenuOpen = false;
+    public bool isPaused = false;
+    public bool secondMenuOpen = false;
 
     public GameObject pauseBackground;
     private Animator _animator1;
@@ -53,6 +53,10 @@ public class PauseMenu : MonoBehaviour
 
     public void OpenSecondMenu(){
        secondMenuOpen = true;
+    }
+
+    public void CloseSecondMenu() {
+        secondMenuOpen = false;
     }
 
     private void HandlePause()

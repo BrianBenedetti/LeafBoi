@@ -30,7 +30,10 @@ public class PauseMenuTraverse : MonoBehaviour
 
     private void HandleButton()
     {
-        buttons[_index].onClick.Invoke();
+        if (pause.isPaused)
+        {
+            buttons[_index].onClick.Invoke();
+        }
     }
 
     public void StartPause()
