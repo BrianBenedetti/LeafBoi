@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
 
     public static PlayerController instance;
+    private InputMaster _controls;
 
     public float smoothing;
     public float speed;
@@ -22,7 +23,6 @@ public class PlayerController : MonoBehaviour
     private Vector2 _moveAxis;
     private Vector2 _playerAxis;
     private Rigidbody _rb;
-    private InputMaster _controls;
 
     private bool _grounded = true;
     [SerializeField]
@@ -66,7 +66,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     protected Animator anim;
 
-    private float _angleOffset = -90;
+    private const float OFFSET = -90;
 
     public void endDialogue()
     {
@@ -361,7 +361,7 @@ public class PlayerController : MonoBehaviour
         //if (_playerAxis.magnitude > 0.1f) { _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360; }
         //Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
         //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, _angleOffset, 0) , Time.deltaTime * smoothing);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, OFFSET, 0) , Time.deltaTime * smoothing);
     }
 
     //Enables controls when this object is enabled
