@@ -132,6 +132,26 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[3].screenRelativeHeight
       value: 0.020535717
       objectReference: {fileID: 0}
+    - target: {fileID: -8699642981642972862, guid: 4c94b8f121d88614a89b18abb9e3c6a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f08be077bc56216448c071b6a95dc38a, type: 2}
+    - target: {fileID: -8547983463884213536, guid: 4c94b8f121d88614a89b18abb9e3c6a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f08be077bc56216448c071b6a95dc38a, type: 2}
+    - target: {fileID: 5386042857177974598, guid: 4c94b8f121d88614a89b18abb9e3c6a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f08be077bc56216448c071b6a95dc38a, type: 2}
+    - target: {fileID: 8197921108753816735, guid: 4c94b8f121d88614a89b18abb9e3c6a8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: f08be077bc56216448c071b6a95dc38a, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4c94b8f121d88614a89b18abb9e3c6a8, type: 3}
 --- !u!4 &4940697857502905069 stripped

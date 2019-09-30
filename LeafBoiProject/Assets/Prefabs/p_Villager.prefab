@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5893127437631087111}
   - component: {fileID: 8546294890845054522}
   m_Layer: 0
-  m_Name: Villager
+  m_Name: p_Villager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -127,11 +127,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Villager
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: 8bb3ad29bf9703d4d8ab83a49bed531e,
-        type: 3}
-      propertyPath: m_CullingMode
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 8bb3ad29bf9703d4d8ab83a49bed531e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -191,7 +186,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 549e4e41e64ae2b45bd0ae1d7cd63cec, type: 2}
+      objectReference: {fileID: 2100000, guid: bb1d4cb5f8d366140a526647bd0b8bfd, type: 2}
+    - target: {fileID: -6057140222963153312, guid: 8bb3ad29bf9703d4d8ab83a49bed531e,
+        type: 3}
+      propertyPath: m_CullingMode
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: -6057140222963153312, guid: 8bb3ad29bf9703d4d8ab83a49bed531e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8bb3ad29bf9703d4d8ab83a49bed531e, type: 3}
