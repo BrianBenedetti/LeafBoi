@@ -120,8 +120,8 @@ public class PlayerController : MonoBehaviour
 
         //if (!pause)
         //{
-            //Unfreezes player if not paused and only goes through these methods during unpaused state
-            _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+        //Unfreezes player if not paused and only goes through these methods during unpaused state
+        _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             AnimatorHandler();
 
             if (anim.GetFloat("Speed") > 0.1f)
@@ -336,22 +336,25 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a jump are pressed.
     private void HandleJump()
     {
-        if (!_grounded && _secondJump && !_interacting && state.Equals(1))
+        if (!pause)
         {
-            anim.SetBool("DoubleJump", true);
-            _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
-            _secondJump = false;
-        }
+            if (!_grounded && _secondJump && !_interacting && state.Equals(1))
+            {
+                anim.SetBool("DoubleJump", true);
+                _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
+                _secondJump = false;
+            }
 
-        if (_grounded && !_interacting)
-        {
-            _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
-            StartCoroutine(setGrounded());
-        }
+            if (_grounded && !_interacting)
+            {
+                _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
+                StartCoroutine(setGrounded());
+            }
 
-        if (_interacting)
-        {
-            _dManager.DisplayNextSentence();
+            if (_interacting)
+            {
+                _dManager.DisplayNextSentence();
+            }
         }
     }
 

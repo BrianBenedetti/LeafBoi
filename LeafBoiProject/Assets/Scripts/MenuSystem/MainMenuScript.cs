@@ -8,9 +8,11 @@ public class MainMenuScript : MonoBehaviour{
    public void Continue(){
 
    }
+
    public void NewGame(){
        SceneManager.LoadScene(1);
    }
+
    public void Quit(){
        Application.Quit();
    }

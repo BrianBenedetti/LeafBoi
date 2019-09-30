@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    public static PlayerController instance;
+    [SerializeField] protected PauseMenuTraverse pmt;
 
     public static bool isPaused = false;
     public static bool secondMenuOpen = false;
@@ -41,6 +41,7 @@ public class PauseMenu : MonoBehaviour
        isPaused = true;
        Time.timeScale = 0f;
        pauseBackground.SetActive(true);
+        pmt.StartPause();
     }
 
     public void Resume(){
@@ -56,7 +57,6 @@ public class PauseMenu : MonoBehaviour
 
     private void HandlePause()
     {
-        Debug.Log("Pause pressed");
         if (isPaused)
         {
             Resume();
