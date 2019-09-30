@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1223156292520096460}
   - component: {fileID: 7084025294915398948}
   m_Layer: 0
-  m_Name: Sprig
+  m_Name: p_Sprig
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2457,7 +2457,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 549e4e41e64ae2b45bd0ae1d7cd63cec, type: 2}
+  - {fileID: 670224309865224971, guid: 7f697cece03770f428fbeb250fc6390a, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -2661,7 +2661,8 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.01
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1504981713932161579, guid: 7f697cece03770f428fbeb250fc6390a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 7f697cece03770f428fbeb250fc6390a, type: 3}
 --- !u!1 &7750866540693679859 stripped
 GameObject:
@@ -2771,7 +2772,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.x
       value: -90
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: -7322834846377134921, guid: 32fea915d6e421443a53d0c9981c341d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e1c6f5ead1372464b84e7aceac30c4af, type: 2}
+    m_RemovedComponents:
+    - {fileID: -6057140222963153312, guid: 32fea915d6e421443a53d0c9981c341d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 32fea915d6e421443a53d0c9981c341d, type: 3}
 --- !u!4 &2549522506006871128 stripped
 Transform:
