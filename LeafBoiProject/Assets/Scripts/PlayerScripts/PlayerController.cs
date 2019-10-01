@@ -116,7 +116,6 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
-
         //anim.SetBool("Pause", pause);
 
         if (!inDialogue)

@@ -4,16 +4,29 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour{
-   
-   public void Continue(){
 
-   }
+    private void Update()
+    {
+        if (Input.anyKeyDown && !(Input.GetKeyDown(KeyCode.Escape)))
+        {
+            NewGame();
+        }
 
-   public void NewGame(){
-       SceneManager.LoadScene(1);
-   }
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Quit();
+        }
+    }
 
-   public void Quit(){
+    public void Continue(){
+
+    }
+
+    public void NewGame(){
+       SceneManager.LoadScene(1, LoadSceneMode.Single);
+    }
+
+    public void Quit(){
        Application.Quit();
-   }
+    }
 }
