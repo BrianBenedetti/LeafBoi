@@ -8,28 +8,39 @@ public class NPCDialogueTrigger : MonoBehaviour{
     public GameObject player;
 
     private bool _inDialogue;
+    private Vector3 _targetDir;
+    private Quaternion startRotation;
 
     private void Start()
     {
+        startRotation = transform.rotation;
     }
 
     private void Update()
     {
         if (_inDialogue)
         {
+            print(this.gameObject.name + "is in a Dialogue");
             LookAtPlayer();
         }
+        else
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, startRotation, 0.05f);
+        }
+    }
+
+    public void ResetRotation() {
+        _inDialogue = false;
     }
 
     public void TriggerDialogue(){
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
+        _inDialogue = true;
     }
 
     public void LookAtPlayer() {
-        Vector3 targetDir = new Vector3(player.transform.position.x - transform.position.x, transform.position.y, player.transform.position.z - transform.position.z);
-
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, targetDir, 1f, 0.0f);
-
+        _targetDir = new Vector3(player.transform.position.x - transform.position.x, transform.position.y, player.transform.position.z - transform.position.z);
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, _targetDir, 0.05f, 0.0f);
         transform.rotation = Quaternion.LookRotation(newDir);
     }
 }

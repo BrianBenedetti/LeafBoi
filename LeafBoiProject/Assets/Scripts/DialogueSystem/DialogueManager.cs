@@ -17,9 +17,8 @@ public class DialogueManager : MonoBehaviour{
     private InputMaster _controls;
     
 
-    [SerializeField]
-    protected GameObject player;
-
+    [SerializeField] protected GameObject player;
+    [SerializeField] protected GameObject[] villagers;
 
     // Start is called before the first frame update
     void Start(){
@@ -74,5 +73,9 @@ public class DialogueManager : MonoBehaviour{
 
         animator.SetBool("IsOpen", false);
         player.GetComponent<PlayerController>().endDialogue();
+        for (int i = 0; i < villagers.Length; i++)
+        {
+            villagers[i].GetComponent<NPCDialogueTrigger>().ResetRotation();
+        }
     }
 }
