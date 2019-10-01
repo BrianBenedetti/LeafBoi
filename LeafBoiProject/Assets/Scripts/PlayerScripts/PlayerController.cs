@@ -133,7 +133,9 @@ public class PlayerController : MonoBehaviour
         }
         else {
             //Freezes player based on constraints during pause
-            _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+            _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+            AnimatorHandler();
+            PlayerFacing(interactable);
         }
 
         if (interact != null)
@@ -339,14 +341,14 @@ public class PlayerController : MonoBehaviour
     {
         if (!pause)
         {
-            if (!_grounded && _secondJump && !_interacting && state.Equals(1))
+            if (!_grounded && _secondJump && !_interacting && state.Equals(1) && !inDialogue)
             {
                 anim.SetBool("DoubleJump", true);
                 _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
                 _secondJump = false;
             }
 
-            if (_grounded && !_interacting)
+            if (_grounded && !_interacting && !inDialogue)
             {
                 _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
                 StartCoroutine(setGrounded());
@@ -366,6 +368,13 @@ public class PlayerController : MonoBehaviour
         //Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
         //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
         transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, OFFSET, 0) , Time.deltaTime * smoothing);
+    }
+
+    private void PlayerFacing(GameObject lookAt)
+    {
+        Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, transform.position.y, lookAt.transform.position.z - transform.position.z);
+        Vector3 newDir = Vector3.RotateTowards(transform.forward, lookDir, 0.05f, 0.0f);
+        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir) * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
     }
 
     //Enables controls when this object is enabled

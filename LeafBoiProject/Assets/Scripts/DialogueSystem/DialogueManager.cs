@@ -27,7 +27,10 @@ public class DialogueManager : MonoBehaviour{
 
     private void Update()
     {
-        player.GetComponent<PlayerController>().inDialogue = animator.GetBool("IsOpen");
+        if (animator.GetBool("IsOpen"))
+        {
+            player.GetComponent<PlayerController>().inDialogue = true;
+        }
     }
 
     public void StartDialogue(Dialogue dialogue){
@@ -77,5 +80,6 @@ public class DialogueManager : MonoBehaviour{
         {
             villagers[i].GetComponent<NPCDialogueTrigger>().ResetRotation();
         }
+        player.GetComponent<PlayerController>().inDialogue = false;
     }
 }

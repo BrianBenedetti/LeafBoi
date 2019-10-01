@@ -20,7 +20,6 @@ public class NPCDialogueTrigger : MonoBehaviour{
     {
         if (_inDialogue)
         {
-            print(this.gameObject.name + "is in a Dialogue");
             LookAtPlayer();
         }
         else
