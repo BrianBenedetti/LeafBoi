@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8187350115524818451}
+  - component: {fileID: 4409202854790264338}
   m_Layer: 0
   m_Name: p_Shrine
   m_TagString: Untagged
@@ -31,6 +32,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4409202854790264338
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 13078136517910557}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.312888, y: 7.6773863, z: 3.3353653}
+  m_Center: {x: 0, y: 3.3386931, z: 0}
 --- !u!1001 &5249253129233484447
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -108,6 +122,26 @@ PrefabInstance:
       propertyPath: m_LODs.Array.data[1].screenRelativeHeight
       value: 0.1880359
       objectReference: {fileID: 0}
+    - target: {fileID: 4783260216435287234, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac6b2c944bf28fd408f1ae90699906af, type: 2}
+    - target: {fileID: -4038511400735155479, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac6b2c944bf28fd408f1ae90699906af, type: 2}
+    - target: {fileID: 253500125313584320, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac6b2c944bf28fd408f1ae90699906af, type: 2}
+    - target: {fileID: -7643356645497636009, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ac6b2c944bf28fd408f1ae90699906af, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cb785f6960389f9438bc149bd7b562db, type: 3}
 --- !u!4 &982808528534659461 stripped

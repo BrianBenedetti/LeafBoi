@@ -7,9 +7,11 @@ using UnityEngine.SceneManagement;
 public class PauseMenu : MonoBehaviour
 {
     [SerializeField] protected PauseMenuTraverse pmt;
+    [SerializeField] protected GameObject controls;
+    [SerializeField] protected GameObject options;
 
-    public static bool isPaused = false;
-    public static bool secondMenuOpen = false;
+    public bool isPaused = false;
+    public bool secondMenuOpen = false;
 
     public GameObject pauseBackground;
     private Animator _animator1;
@@ -45,14 +47,22 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume(){
-       secondMenuOpen = false;
-       isPaused = false;
-       Time.timeScale = 1f;
-       pauseBackground.SetActive(false);
+        secondMenuOpen = false;
+        isPaused = false;
+        Time.timeScale = 1f;
+        pauseBackground.SetActive(false);
+        controls.SetActive(false);
+        options.SetActive(false);
     }
 
     public void OpenSecondMenu(){
        secondMenuOpen = true;
+    }
+
+    public void CloseSecondMenu() {
+        secondMenuOpen = false;
+        controls.SetActive(false);
+        options.SetActive(false);
     }
 
     private void HandlePause()
