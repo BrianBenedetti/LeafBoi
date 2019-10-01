@@ -47,10 +47,12 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Resume(){
-       secondMenuOpen = false;
-       isPaused = false;
-       Time.timeScale = 1f;
-       pauseBackground.SetActive(false);
+        secondMenuOpen = false;
+        isPaused = false;
+        Time.timeScale = 1f;
+        pauseBackground.SetActive(false);
+        controls.SetActive(false);
+        options.SetActive(false);
     }
 
     public void OpenSecondMenu(){

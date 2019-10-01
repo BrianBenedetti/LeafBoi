@@ -34,7 +34,7 @@ public class PauseMenuTraverse : MonoBehaviour
 
     private void HandleButton()
     {
-        if (pause.isPaused)
+        if (pause.isPaused && _pauseActive)
         {
             buttons[_index].onClick.Invoke();
         }
@@ -97,6 +97,7 @@ public class PauseMenuTraverse : MonoBehaviour
             _pauseActive = false;
         }
 
+        buttons[_index].Select();
     }
 
     private void OnEnable()
