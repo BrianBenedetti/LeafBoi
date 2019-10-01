@@ -91,7 +91,7 @@ public class PlayerController : MonoBehaviour
         //Setting controls based and provides them with functionality for their specified buttons
         _controls = new InputMaster();
 
-        _controls.Player.Jump.performed += context => HandleJump();
+        _controls.Player.Jump.started += context => HandleJump();
 
         _controls.Player.Movement.performed += context => _moveAxis = context.ReadValue<Vector2>();
         _controls.Player.Movement.performed += context => _playerAxis = context.ReadValue<Vector2>();
@@ -116,10 +116,11 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+
         //anim.SetBool("Pause", pause);
 
-        //if (!pause)
-        //{
+        if (!inDialogue)
+        {
         //Unfreezes player if not paused and only goes through these methods during unpaused state
         _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             AnimatorHandler();
@@ -129,11 +130,11 @@ public class PlayerController : MonoBehaviour
                 PlayerFacing();
             }
             MovementHandler();
-        //}
-        //else {
-        //    //Freezes player based on constraints during pause
-        //    _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationY | RigidbodyConstraints.FreezeRotationZ;
-        //}
+        }
+        else {
+            //Freezes player based on constraints during pause
+            _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionY | RigidbodyConstraints.FreezePositionZ;
+        }
 
         if (interact != null)
         {

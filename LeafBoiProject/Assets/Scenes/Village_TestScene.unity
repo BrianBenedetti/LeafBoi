@@ -219,6 +219,11 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[0]
       value: "I\u2019m busy."
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!4 &9345342 stripped
@@ -705,7 +710,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 73399609}
-  m_LocalRotation: {x: 0.07959463, y: -0.0000000068607173, z: 5.4781424e-10, w: 0.9968273}
+  m_LocalRotation: {x: 0.07959463, y: 0.0000000068607164, z: -5.478142e-10, w: 0.9968273}
   m_LocalPosition: {x: 47.59, y: 4.3954864, z: 80.71691}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -12322,6 +12327,11 @@ PrefabInstance:
       value: "Those horns have always bothered m- Oh, hello Sprig! You\u2019re looking
         good today!"
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!4 &558872617 stripped
@@ -20891,6 +20901,11 @@ PrefabInstance:
       value: "Those horns have always bothered m- Oh, hello Sprig! You\u2019re looking
         good today!"
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!4 &996024104 stripped
@@ -22487,6 +22502,11 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[1]
       value: "But the Elder doesn\u2019t allow anyone to go out of the village anymore."
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!4 &1085486131 stripped
@@ -29738,7 +29758,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1437313122}
-  m_LocalRotation: {x: 0.05786601, y: 0.000000008776115, z: -0.00000018832822, w: 0.9983244}
+  m_LocalRotation: {x: 0.05786601, y: 0.000000013070502, z: -0.00000018857713, w: 0.9983244}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -34420,6 +34440,11 @@ PrefabInstance:
       propertyPath: dialogue.sentences.Array.data[0]
       value: Thanks to the Amethyst Sap our crops are looking better than ever!
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!4 &1557800153 stripped
@@ -34894,7 +34919,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1610103385}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d797c4b8ca490314c9c318ea4425de36, type: 3}
   m_Name: 
@@ -39242,6 +39267,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nameText: {fileID: 1490131227}
   dialogueText: {fileID: 1334393088}
+  convActive: 0
   animator: {fileID: 909035143}
   player: {fileID: 445194352}
 --- !u!4 &1815080000
@@ -40613,7 +40639,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1882761448}
-  m_LocalRotation: {x: 0.07596754, y: 0.0000000057158367, z: -0.00000013099368, w: 0.9971103}
+  m_LocalRotation: {x: 0.07596754, y: 0.000000014294168, z: -0.00000013164724, w: 0.9971103}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -43901,6 +43927,11 @@ PrefabInstance:
       value: "I heard the Elder wanted to speak to you. He\u2019s in the middle of
         the town."
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!4 &2024110583 stripped
@@ -46406,6 +46437,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.75
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!1001 &6925313149779380377
@@ -46490,5 +46526,10 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6925313150390799355, guid: 5e5592c7265c28847bc084b6acde71ea,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 445194352}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5e5592c7265c28847bc084b6acde71ea, type: 3}

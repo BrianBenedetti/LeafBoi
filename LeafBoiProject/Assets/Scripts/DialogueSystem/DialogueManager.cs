@@ -8,12 +8,14 @@ public class DialogueManager : MonoBehaviour{
 
     public TextMeshProUGUI nameText;
     public TextMeshProUGUI dialogueText;
+    public bool convActive;
 
     public Animator animator;
 
     private Queue<string> sentences;
 
     private InputMaster _controls;
+    
 
     [SerializeField]
     protected GameObject player;
@@ -22,6 +24,11 @@ public class DialogueManager : MonoBehaviour{
     // Start is called before the first frame update
     void Start(){
         sentences = new Queue<string>();
+    }
+
+    private void Update()
+    {
+        player.GetComponent<PlayerController>().inDialogue = animator.GetBool("IsOpen");
     }
 
     public void StartDialogue(Dialogue dialogue){
