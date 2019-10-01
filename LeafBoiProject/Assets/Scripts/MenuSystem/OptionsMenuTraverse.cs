@@ -29,6 +29,13 @@ public class OptionsMenuTraverse : MonoBehaviour
         _controls.Player.Movement.performed += context => _moveAxis = context.ReadValue<Vector2>();
         _controls.Player.Movement.performed += context => HandleTraversal();
         _controls.Player.Movement.canceled += context => _moveAxis = Vector2.zero;
+
+        _controls.Player.Interact.performed += context => HandleExit();
+    }
+
+    private void HandleExit()
+    {
+        pause.CloseSecondMenu();
     }
 
     public void StartOptions()
