@@ -33,6 +33,15 @@ public class PauseMenu : MonoBehaviour
     {
         _animator1.SetBool("IsOpen",isPaused);
         _animator2.SetBool("SecondaryOpen",secondMenuOpen);
+
+        if (isPaused)
+        {
+            Cursor.visible = true;
+        }
+        else
+        {
+            Cursor.visible = false;
+        }
     }
 
     public void GoToMainMenu(){

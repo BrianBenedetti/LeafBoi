@@ -366,14 +366,19 @@ public class PlayerController : MonoBehaviour
         //if (_playerAxis.magnitude > 0.1f) { _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360; }
         //Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
         //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, OFFSET, 0) , Time.deltaTime * smoothing);
+        if (!inDialogue)
+        {
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
+        }
     }
 
     private void PlayerFacing(GameObject lookAt)
     {
-        Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, transform.position.y, lookAt.transform.position.z - transform.position.z);
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, lookDir, 0.05f, 0.0f);
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir) * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
+        if (lookAt.name != "Elder")
+        {
+            Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, transform.position.y, lookAt.transform.position.z - transform.position.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir) * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
+        }
     }
 
     //Enables controls when this object is enabled

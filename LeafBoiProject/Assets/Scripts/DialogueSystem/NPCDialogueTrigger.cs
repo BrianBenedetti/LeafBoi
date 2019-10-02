@@ -10,9 +10,11 @@ public class NPCDialogueTrigger : MonoBehaviour{
     private bool _inDialogue;
     private Vector3 _targetDir;
     private Quaternion startRotation;
+    private Rigidbody _rb;
 
     private void Start()
     {
+        _rb = GetComponent<Rigidbody>();
         startRotation = transform.rotation;
     }
 
@@ -38,8 +40,10 @@ public class NPCDialogueTrigger : MonoBehaviour{
     }
 
     public void LookAtPlayer() {
-        _targetDir = new Vector3(player.transform.position.x - transform.position.x, transform.position.y, player.transform.position.z - transform.position.z);
-        Vector3 newDir = Vector3.RotateTowards(transform.forward, _targetDir, 0.05f, 0.0f);
-        transform.rotation = Quaternion.LookRotation(newDir);
+        if (name != "Elder")
+        {
+            Vector3 lookDir = new Vector3(player.transform.position.x - transform.position.x, transform.position.y, player.transform.position.z - transform.position.z);
+            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), Time.deltaTime * 2f);
+        }
     }
 }
