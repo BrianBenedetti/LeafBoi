@@ -223,7 +223,7 @@ public class PlayerController : MonoBehaviour
         //Makes fall feel faster in order to be able to distinguish between normal fall and glide
         if (!_gliding && _rb.velocity.y < 0.1)
         {
-            _rb.velocity += Vector3.up * Physics.gravity.y * 1.5f * (2.5f - 1) * Time.deltaTime;
+            _rb.velocity += Vector3.up * Physics.gravity.y * 2.5f * (2.5f - 1) * Time.deltaTime;
         }
 
         if (state.Equals(0) || state.Equals(2))
