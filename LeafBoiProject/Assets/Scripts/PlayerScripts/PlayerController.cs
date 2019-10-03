@@ -9,8 +9,8 @@ public class PlayerController : MonoBehaviour
     private InputMaster _controls;
 
     public float smoothing;
+    public float walkSmoothing;
     public float speed;
-    public float jumpForce;
 
     public bool pause;
     public bool inDialogue;
@@ -197,12 +197,18 @@ public class PlayerController : MonoBehaviour
 
             _moveDir = forward * _moveAxis.y + right * _moveAxis.x;
 
-            _rb.velocity = new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed);
+            _rb.velocity = Vector3.Slerp(_rb.velocity,new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed), walkSmoothing);
         }
         else
         {
+            Vector3 forward = _cam.transform.forward;
+            Vector3 right = _cam.transform.right;
+
+            forward.y = 0f;
+            right.y = 0f;
+
             _dashTime -= Time.deltaTime;
-            _rb.velocity = transform.right * speed * _dashMult;
+            _rb.velocity = right * speed * _dashMult;
             if (_dashTime < 0)
             {
                 _dashing = false;
@@ -316,23 +322,6 @@ public class PlayerController : MonoBehaviour
         {
             print("Nothing to interact with.");
         }
-    }
-
-
-    //Checks if player is in contact with ground do decide whether they can jump again.
-    private void OnCollisionStay(Collision collision)
-    {
-        //if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Platform" )
-        //{
-        //    _grounded = true;
-        //    _secondJump = true;
-        //    _gliding = false;
-        //    _canDash = true;
-        //    anim.SetBool("Falling", false);
-        //    anim.SetBool("Jumping", false);
-        //    anim.SetBool("Dash", false);
-        //    anim.SetBool("DoubleJump", false);
-        //}
     }
 
     public void Grounded()
