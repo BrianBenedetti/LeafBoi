@@ -322,17 +322,29 @@ public class PlayerController : MonoBehaviour
     //Checks if player is in contact with ground do decide whether they can jump again.
     private void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Platform" )
-        {
-            _grounded = true;
-            _secondJump = true;
-            _gliding = false;
-            _canDash = true;
-            anim.SetBool("Falling", false);
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Dash", false);
-            anim.SetBool("DoubleJump", false);
-        }
+        //if (collision.gameObject.tag == "Floor" || collision.gameObject.tag == "Object" || collision.gameObject.tag == "Platform" )
+        //{
+        //    _grounded = true;
+        //    _secondJump = true;
+        //    _gliding = false;
+        //    _canDash = true;
+        //    anim.SetBool("Falling", false);
+        //    anim.SetBool("Jumping", false);
+        //    anim.SetBool("Dash", false);
+        //    anim.SetBool("DoubleJump", false);
+        //}
+    }
+
+    public void Grounded()
+    {
+        _grounded = true;
+        _secondJump = true;
+        _gliding = false;
+        _canDash = true;
+        anim.SetBool("Falling", false);
+        anim.SetBool("Jumping", false);
+        anim.SetBool("Dash", false);
+        anim.SetBool("DoubleJump", false);
     }
 
     //Handles what happens when any of the buttons that entail a jump are pressed.
