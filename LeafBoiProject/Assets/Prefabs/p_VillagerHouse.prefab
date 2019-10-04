@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1891213682049567475}
-  - component: {fileID: 3635140252784346842}
+  - component: {fileID: 4997372265267401638}
   m_Layer: 0
   m_Name: p_VillagerHouse
   m_TagString: Untagged
@@ -32,8 +32,8 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &3635140252784346842
-MeshCollider:
+--- !u!65 &4997372265267401638
+BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -42,10 +42,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 1
-  m_CookingOptions: 14
-  m_Mesh: {fileID: -1164993837756546178, guid: 4c94b8f121d88614a89b18abb9e3c6a8, type: 3}
+  serializedVersion: 2
+  m_Size: {x: 6.7021093, y: 20.48762, z: 11.766757}
+  m_Center: {x: 0, y: 9.74381, z: 0.6603904}
 --- !u!1001 &138017609104173559
 PrefabInstance:
   m_ObjectHideFlags: 0
