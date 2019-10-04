@@ -197,18 +197,12 @@ public class PlayerController : MonoBehaviour
 
             _moveDir = forward * _moveAxis.y + right * _moveAxis.x;
 
-            _rb.velocity = Vector3.Slerp(_rb.velocity,new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed), walkSmoothing);
+            _rb.velocity = new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed);
         }
         else
         {
-            Vector3 forward = _cam.transform.forward;
-            Vector3 right = _cam.transform.right;
-
-            forward.y = 0f;
-            right.y = 0f;
-
             _dashTime -= Time.deltaTime;
-            _rb.velocity = right * speed * _dashMult;
+            _rb.velocity = transform.right * speed * _dashMult;
             if (_dashTime < 0)
             {
                 _dashing = false;
@@ -390,7 +384,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator setGrounded()
     {
-        yield return new WaitForSeconds(0.01f);
+        yield return new WaitForSeconds(Mathf.Epsilon);
         _grounded = false;
     }
 
