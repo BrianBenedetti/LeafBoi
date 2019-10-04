@@ -281,7 +281,7 @@ MonoBehaviour:
     m_Value: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0.026165891, g: 0.117341995, b: 0.26415092, a: 1}
+    m_Value: {r: 0.21162385, g: 0.27856138, b: 0.39012396, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
@@ -309,20 +309,20 @@ MonoBehaviour:
     min: 0
   albedo:
     m_OverrideState: 1
-    m_Value: {r: 0.37936097, g: 0.44702598, b: 0.5188679, a: 0.41960785}
+    m_Value: {r: 0.89444643, g: 0.9170386, b: 0.9433962, a: 1}
     hdr: 0
     showAlpha: 1
     showEyeDropper: 1
   meanFreePath:
     m_OverrideState: 1
-    m_Value: 350
+    m_Value: 800
     min: 1
   baseHeight:
     m_OverrideState: 1
     m_Value: 4
   meanHeight:
     m_OverrideState: 1
-    m_Value: 9.01
+    m_Value: 9
   anisotropy:
     m_OverrideState: 0
     m_Value: -1
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aaa3b8214f75b354e9ba2caadd022259, type: 3}
   m_Name: DepthOfField
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   m_AdvancedMode: 0
   focusMode:
     m_OverrideState: 1
@@ -417,8 +417,8 @@ MonoBehaviour:
     m_OverrideState: 1
     m_Value: 1
   opacity:
-    m_OverrideState: 0
-    m_Value: 1
+    m_OverrideState: 1
+    m_Value: 0.45
     min: 0
     max: 1
 --- !u!114 &4446082657720995354
@@ -437,28 +437,28 @@ MonoBehaviour:
   m_AdvancedMode: 0
   maxShadowDistance:
     m_OverrideState: 1
-    m_Value: 500.18
+    m_Value: 750
     min: 0
   cascadeShadowSplitCount:
     m_OverrideState: 1
-    m_Value: 3
+    m_Value: 4
     min: 1
     max: 4
   cascadeShadowSplit0:
     m_OverrideState: 1
-    m_Value: 0.044
+    m_Value: 0.06666667
   cascadeShadowSplit1:
     m_OverrideState: 1
-    m_Value: 0.114
+    m_Value: 0.4
   cascadeShadowSplit2:
     m_OverrideState: 1
-    m_Value: 0.382
+    m_Value: 0.8666667
   cascadeShadowBorder0:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 0.99999994
   cascadeShadowBorder1:
-    m_OverrideState: 0
-    m_Value: 0
+    m_OverrideState: 1
+    m_Value: 1
   cascadeShadowBorder2:
     m_OverrideState: 0
     m_Value: 0
