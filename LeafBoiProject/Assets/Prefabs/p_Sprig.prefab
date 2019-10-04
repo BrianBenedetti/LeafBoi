@@ -14,6 +14,8 @@ GameObject:
   - component: {fileID: 1223156292520096461}
   - component: {fileID: 1223156292520096460}
   - component: {fileID: 7084025294915398948}
+  - component: {fileID: 1830057666}
+  - component: {fileID: 3487435291911259807}
   m_Layer: 0
   m_Name: p_Sprig
   m_TagString: Player
@@ -49,7 +51,7 @@ Rigidbody:
   m_AngularDrag: 10
   m_UseGravity: 1
   m_IsKinematic: 0
-  m_Interpolate: 2
+  m_Interpolate: 1
   m_Constraints: 80
   m_CollisionDetection: 1
 --- !u!95 &1223156292520096458
@@ -64,7 +66,7 @@ Animator:
   m_Avatar: {fileID: 9000000, guid: 32fea915d6e421443a53d0c9981c341d, type: 3}
   m_Controller: {fileID: 9100000, guid: 46ae3788a467a624d9518866f55a25f1, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 1
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -84,8 +86,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   smoothing: 5
+  walkSmoothing: 0.8
   speed: 10
-  jumpForce: 150
   pause: 0
   inDialogue: 0
   interactable: {fileID: 0}
@@ -98,7 +100,7 @@ MonoBehaviour:
   _jumping: 0
   _dashing: 0
   _dJumping: 0
-  _jumpHeight: 3
+  _jumpHeight: 2
   _dashLimit: 0.15
   _maxFallVelocity: 1.5
   _dashMult: 10
@@ -131,6 +133,36 @@ CapsuleCollider:
   m_Height: 2.1908555
   m_Direction: 1
   m_Center: {x: 0.04766178, y: 1.0816143, z: -0.000000001983052}
+--- !u!114 &1830057666
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223156292520096463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d20e90fdf05b94ab21350ab1b9b2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1223156292520096459}
+  dToGround: 0.1
+  player: {fileID: 1223156292520096461}
+--- !u!114 &3487435291911259807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1223156292520096463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82d20e90fdf05b94ab21350ab1b9b2dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 1223156292520096459}
+  dToGround: 0.1
+  player: {fileID: 1223156292520096461}
 --- !u!183 &311867001008080572
 Cloth:
   m_ObjectHideFlags: 0
@@ -2661,8 +2693,7 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.01
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: -1504981713932161579, guid: 7f697cece03770f428fbeb250fc6390a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7f697cece03770f428fbeb250fc6390a, type: 3}
 --- !u!1 &7750866540693679859 stripped
 GameObject:
@@ -2777,8 +2808,7 @@ PrefabInstance:
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: e1c6f5ead1372464b84e7aceac30c4af, type: 2}
-    m_RemovedComponents:
-    - {fileID: -6057140222963153312, guid: 32fea915d6e421443a53d0c9981c341d, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 32fea915d6e421443a53d0c9981c341d, type: 3}
 --- !u!4 &2549522506006871128 stripped
 Transform:
