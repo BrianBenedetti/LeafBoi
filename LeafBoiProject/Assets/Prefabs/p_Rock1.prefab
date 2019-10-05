@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 61930126481106318}
-  - component: {fileID: 1769802905339576540}
+  - component: {fileID: 326547080368160149}
   m_Layer: 0
   m_Name: p_Rock1
   m_TagString: Untagged
@@ -26,13 +26,13 @@ Transform:
   m_GameObject: {fileID: 7148065341131479463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 7000301904045395716}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!64 &1769802905339576540
+--- !u!64 &326547080368160149
 MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,7 +45,7 @@ MeshCollider:
   serializedVersion: 3
   m_Convex: 1
   m_CookingOptions: 14
-  m_Mesh: {fileID: -5725078588750851569, guid: 39de72d3a3540f3418d2249a9ebb387f, type: 3}
+  m_Mesh: {fileID: 534044885338836874, guid: 39de72d3a3540f3418d2249a9ebb387f, type: 3}
 --- !u!1001 &2620151261080871966
 PrefabInstance:
   m_ObjectHideFlags: 0
