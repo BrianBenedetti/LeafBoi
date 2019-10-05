@@ -56,6 +56,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected float _dashMult;
     [SerializeField] protected Animator anim;
     [SerializeField] protected float jumpDelay;
+    [SerializeField] protected float speedCharge;
     private bool _jumpPrep;
     private const float OFFSET = -90;
 
@@ -154,7 +155,13 @@ public class PlayerController : MonoBehaviour
         }
 
         //Setting the Speed to different values to be used by the blend trees
-        _magSpeed = new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude;
+        if (!(new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude == 0))
+        {
+            _magSpeed = Mathf.Lerp(_magSpeed, new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude, speedCharge);
+        }
+        else {
+            _magSpeed = 0;
+        }
         _magSpeed = Mathf.Abs(_magSpeed);
 
         anim.SetFloat("Speed", _magSpeed);
