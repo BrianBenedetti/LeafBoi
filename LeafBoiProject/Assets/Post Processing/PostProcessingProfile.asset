@@ -138,45 +138,6 @@ MonoBehaviour:
   fogType:
     m_OverrideState: 1
     m_Value: 3
---- !u!114 &-2604848319534744937
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6b24b200358312b4fa1004e2431c2f1f, type: 3}
-  m_Name: ShadowsMidtonesHighlights
-  m_EditorClassIdentifier: 
-  active: 0
-  m_AdvancedMode: 0
-  shadows:
-    m_OverrideState: 1
-    m_Value: {x: 0.8615183, y: 0.84137326, z: 1, w: -0.07858547}
-  midtones:
-    m_OverrideState: 1
-    m_Value: {x: 0.9802997, y: 0.9523498, z: 1, w: 0.07858547}
-  highlights:
-    m_OverrideState: 1
-    m_Value: {x: 0.9126467, y: 0.97055477, z: 1, w: 0.117878206}
-  shadowsStart:
-    m_OverrideState: 0
-    m_Value: 0
-    min: 0
-  shadowsEnd:
-    m_OverrideState: 0
-    m_Value: 0.3
-    min: 0
-  highlightsStart:
-    m_OverrideState: 0
-    m_Value: 0.55
-    min: 0
-  highlightsEnd:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
 --- !u!114 &-1749905615837601906
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -255,12 +216,10 @@ MonoBehaviour:
   - {fileID: -6440526448428721876}
   - {fileID: -4060703174915940975}
   - {fileID: 737241554540119481}
-  - {fileID: 5137294702601734998}
   - {fileID: 4397134202079464781}
   - {fileID: 4446082657720995354}
   - {fileID: 1035568825591963977}
   - {fileID: -1566465483181343801}
-  - {fileID: -2604848319534744937}
   - {fileID: -4897259778938016807}
 --- !u!114 &737241554540119481
 MonoBehaviour:
@@ -465,48 +424,3 @@ MonoBehaviour:
   cascadeShadowBorder3:
     m_OverrideState: 0
     m_Value: 0
---- !u!114 &5137294702601734998
-MonoBehaviour:
-  m_ObjectHideFlags: 3
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 56b145d2b9ee1ac4f846968484e7485a, type: 3}
-  m_Name: ContactShadows
-  m_EditorClassIdentifier: 
-  active: 0
-  m_AdvancedMode: 0
-  enable:
-    m_OverrideState: 1
-    m_Value: 1
-  length:
-    m_OverrideState: 1
-    m_Value: 0.164
-    min: 0
-    max: 1
-  opacity:
-    m_OverrideState: 0
-    m_Value: 1
-    min: 0
-    max: 1
-  distanceScaleFactor:
-    m_OverrideState: 1
-    m_Value: 0.341
-    min: 0
-    max: 1
-  maxDistance:
-    m_OverrideState: 0
-    m_Value: 50
-    min: 0
-  fadeDistance:
-    m_OverrideState: 0
-    m_Value: 5
-    min: 0
-  sampleCount:
-    m_OverrideState: 1
-    m_Value: 4
-    min: 4
-    max: 64
