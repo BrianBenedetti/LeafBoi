@@ -50,22 +50,13 @@ public class PlayerController : MonoBehaviour
     private Camera _cam;
     private Vector3 _moveDir;
 
-
-    [SerializeField]
-    protected float _jumpHeight;
-
-    [SerializeField]
-    protected float _dashLimit;
-
-    [SerializeField]
-    protected float _maxFallVelocity;
-
-    [SerializeField]
-    protected float _dashMult;
-
-    [SerializeField]
-    protected Animator anim;
-
+    [SerializeField] protected float _jumpHeight;
+    [SerializeField] protected float _dashLimit;
+    [SerializeField] protected float _maxFallVelocity;
+    [SerializeField] protected float _dashMult;
+    [SerializeField] protected Animator anim;
+    [SerializeField] protected float jumpDelay;
+    private bool _jumpPrep;
     private const float OFFSET = -90;
 
     public void endDialogue()
@@ -154,7 +145,7 @@ public class PlayerController : MonoBehaviour
 
         if (_rb.velocity.y > 0)
         {
-            anim.SetBool("Jumping", true);   
+            //anim.SetBool("Jumping", true);   
         }
 
         if (anim.GetBool("Tired") && state != 3)
@@ -320,14 +311,17 @@ public class PlayerController : MonoBehaviour
 
     public void Grounded()
     {
-        _grounded = true;
-        _secondJump = true;
-        _gliding = false;
-        _canDash = true;
-        anim.SetBool("Falling", false);
-        anim.SetBool("Jumping", false);
-        anim.SetBool("Dash", false);
-        anim.SetBool("DoubleJump", false);
+        if (!_jumpPrep)
+        {
+            _grounded = true;
+            _secondJump = true;
+            _gliding = false;
+            _canDash = true;
+            anim.SetBool("Falling", false);
+            anim.SetBool("Jumping", false);
+            anim.SetBool("Dash", false);
+            anim.SetBool("DoubleJump", false);
+        }
     }
 
     //Handles what happens when any of the buttons that entail a jump are pressed.
@@ -344,7 +338,8 @@ public class PlayerController : MonoBehaviour
 
             if (_grounded && !_interacting && !inDialogue)
             {
-                _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
+                anim.SetBool("Jumping", true);
+                _jumpPrep = true;
                 StartCoroutine(setGrounded());
             }
 
@@ -384,8 +379,11 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator setGrounded()
     {
-        yield return new WaitForSeconds(Mathf.Epsilon);
+        yield return new WaitForSeconds(jumpDelay);
+        _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
+        yield return new WaitForSeconds(0.01f);
         _grounded = false;
+        _jumpPrep = false;
     }
 
     //Disables controls when this object is enabled
