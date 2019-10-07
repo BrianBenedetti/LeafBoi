@@ -373,8 +373,9 @@ public class PlayerController : MonoBehaviour
     {
         if (lookAt.name != "Elder")
         {
-            Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, transform.position.y, lookAt.transform.position.z - transform.position.z);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir) * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
+            Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, 0, lookAt.transform.position.z - transform.position.z);
+            Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
         }
     }
 
