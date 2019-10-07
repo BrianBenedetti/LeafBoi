@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Interaction : MonoBehaviour
 {
+    public GameObject InteractButton;
+
     public bool NPC;
     public bool Button;
     public bool Instrument;
@@ -11,15 +13,31 @@ public class Interaction : MonoBehaviour
     [SerializeField]
     protected bool interactable;
 
-    // Start is called before the first frame update
-    void Start()
+    private bool _interactDisplay;
+
+    private void Start()
     {
-        
+        _interactDisplay = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        if (GetComponent<NPCDialogueTrigger>() != null)
+        {
+            if (!GetComponent<NPCDialogueTrigger>().inDialogue)
+            {
+                InteractButton.SetActive(_interactDisplay);
+            }
+            else {
+                InteractButton.SetActive(false);
+            }
+        }
+        else {
+            InteractButton.SetActive(_interactDisplay);
+        }
+        
+        InteractButton.GetComponent<Transform>().LookAt(Camera.main.transform);
+        
     }
 
     private void OnTriggerEnter(Collider other)
@@ -28,6 +46,7 @@ public class Interaction : MonoBehaviour
         {
             interactable = true;
             PlayerController.instance.interactable = this.gameObject;
+            _interactDisplay = true;
         }
     }
 
@@ -46,6 +65,7 @@ public class Interaction : MonoBehaviour
         {
             interactable = false;
             PlayerController.instance.interactable = null;
+            _interactDisplay = false;
         }
         
     }

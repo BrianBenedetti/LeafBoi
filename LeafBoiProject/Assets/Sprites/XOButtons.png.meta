@@ -8,6 +8,12 @@ TextureImporter:
   - first:
       213: 9174204663188465087
     second: XButton
+  - first:
+      213: -4076411626441518476
+    second: XOButtons_0
+  - first:
+      213: -4297701181805242181
+    second: XOButtons_1
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -92,7 +98,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: OButton
+      name: XOButtons_0
       rect:
         serializedVersion: 2
         x: 206
@@ -106,14 +112,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b830e9b7f649b641a502b1d0c3e975f
-      internalID: 457677432918997716
+      spriteID: 5c095cb83fd37d044b47ee682c114749
+      internalID: -4076411626441518476
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: XButton
+      name: XOButtons_1
       rect:
         serializedVersion: 2
         x: 1108
@@ -127,8 +133,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 88da94dd67bc6d14687de05b5d97f480
-      internalID: 9174204663188465087
+      spriteID: 502923c10c46dfd44929411f7f85ea01
+      internalID: -4297701181805242181
       vertices: []
       indices: 
       edges: []
