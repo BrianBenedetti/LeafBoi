@@ -16,7 +16,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3671342105113466324
 Transform:
@@ -70,6 +70,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ElderHouse.LowPoly
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: f8d18ccc7505b1b44b6bcfe12ce00c56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -2007747585861553602, guid: f8d18ccc7505b1b44b6bcfe12ce00c56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -3857715048828287161, guid: f8d18ccc7505b1b44b6bcfe12ce00c56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -331204617021639154, guid: f8d18ccc7505b1b44b6bcfe12ce00c56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -1499396417470936781, guid: f8d18ccc7505b1b44b6bcfe12ce00c56,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: f8d18ccc7505b1b44b6bcfe12ce00c56,
         type: 3}

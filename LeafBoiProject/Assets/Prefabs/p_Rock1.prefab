@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &61930126481106318
 Transform:
@@ -57,6 +57,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Rock1.LowPoly
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 39de72d3a3540f3418d2249a9ebb387f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -4389781325570851104, guid: 39de72d3a3540f3418d2249a9ebb387f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 8112933420069044584, guid: 39de72d3a3540f3418d2249a9ebb387f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 5053962981680261538, guid: 39de72d3a3540f3418d2249a9ebb387f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3980193886460560342, guid: 39de72d3a3540f3418d2249a9ebb387f,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: 39de72d3a3540f3418d2249a9ebb387f,
         type: 3}

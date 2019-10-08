@@ -15,7 +15,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &8187350115524818451
 Transform:
@@ -57,6 +57,31 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Shrine.LowPoly
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 3433716944532579943, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: -6945565777016980269, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7568511477411975725, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 7026315558665927522, guid: cb785f6960389f9438bc149bd7b562db,
+        type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: cb785f6960389f9438bc149bd7b562db,
         type: 3}
