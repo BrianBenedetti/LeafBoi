@@ -139,14 +139,15 @@ public class PlayerController : MonoBehaviour
     private void AnimatorHandler()
     {
         //Setting Velocity to different values
-        if (_rb.velocity.y < -Mathf.Epsilon )
+        if (_rb.velocity.y < -0.01f )
         {
             anim.SetBool("Falling", true);
         }
 
         if (_rb.velocity.y > 0)
         {
-            //anim.SetBool("Jumping", true);   
+            //anim.SetBool("Jumping", true);  
+            anim.SetBool("Falling", false);
         }
 
         if (anim.GetBool("Tired") && state != 3)

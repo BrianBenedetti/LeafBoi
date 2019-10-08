@@ -12,8 +12,9 @@ public class DialogueManager : MonoBehaviour{
 
     public Animator animator;
 
-    private Queue<string> sentences;
-
+    private string _sentence;
+    private Queue<string> _sentences;
+    private bool _typing;
     private InputMaster _controls;
     
 
@@ -22,7 +23,7 @@ public class DialogueManager : MonoBehaviour{
 
     // Start is called before the first frame update
     void Start(){
-        sentences = new Queue<string>();
+        _sentences = new Queue<string>();
     }
 
     private void Update()
@@ -39,11 +40,11 @@ public class DialogueManager : MonoBehaviour{
 
         nameText.text = dialogue.name;
 
-        sentences.Clear();
+        _sentences.Clear();
 
         foreach(string sentence in dialogue.sentences){
 
-            sentences.Enqueue(sentence);
+            _sentences.Enqueue(sentence);
         }
 
         DisplayNextSentence();
@@ -51,25 +52,36 @@ public class DialogueManager : MonoBehaviour{
 
     public void DisplayNextSentence(){
 
-        if(sentences.Count == 0){
+        if (!_typing)
+        {
+            if (_sentences.Count == 0)
+            {
 
-            EndDialogue();
-            return;
+                EndDialogue();
+                return;
+            }
+
+            _sentence = _sentences.Dequeue();
+            StopAllCoroutines();
+            StartCoroutine(TypeSentence(_sentence));
         }
-
-        string sentence = sentences.Dequeue();
-        StopAllCoroutines();
-        StartCoroutine(TypeSentence(sentence));
+        else
+        {
+            StopAllCoroutines();
+            dialogueText.text = _sentence;
+            _typing = false;
+        }
     }
 
     IEnumerator TypeSentence(string sentence){
-
+        _typing = true;
         dialogueText.text = "";
         foreach (char letter in sentence.ToCharArray()){
             
             dialogueText.text += letter;
             yield return null;
         }
+        _typing = false;
     }
 
     void EndDialogue(){
