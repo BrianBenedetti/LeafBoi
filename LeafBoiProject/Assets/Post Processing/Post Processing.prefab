@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6893947493831582230}
   - component: {fileID: 6893947493831582229}
+  - component: {fileID: 395231867}
   m_Layer: 8
   m_Name: Post Processing
   m_TagString: Untagged
@@ -47,4 +48,20 @@ MonoBehaviour:
   priority: 0
   blendDistance: 0
   weight: 1
-  sharedProfile: {fileID: 11400000, guid: e277280e3dda2c745b66dae885362ff9, type: 2}
+  sharedProfile: {fileID: 11400000, guid: 6692e73fe44cbcc4d89ed88aa66d7395, type: 2}
+--- !u!114 &395231867
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6893947493831582228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 441482e8936e35048a1dffac814e3ef8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Profile: {fileID: 11400000, guid: 6692e73fe44cbcc4d89ed88aa66d7395, type: 2}
+  m_StaticLightingSkyUniqueID: 0
+  m_SkySettings: {fileID: 0}
+  m_SkySettingsFromProfile: {fileID: 0}
