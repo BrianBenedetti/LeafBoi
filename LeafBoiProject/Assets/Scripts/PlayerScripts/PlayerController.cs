@@ -18,8 +18,6 @@ public class PlayerController : MonoBehaviour
     public GameObject interactable;
     public int state = 0;
 
-    public Text interact;
-
     private Vector2 _moveAxis;
     private Vector2 _playerAxis;
     private Rigidbody _rb;
@@ -128,11 +126,6 @@ public class PlayerController : MonoBehaviour
             AnimatorHandler();
             PlayerFacing(interactable);
         }
-
-        if (interact != null)
-        {
-            interact.gameObject.SetActive(interactable != null);
-        }   
     }
 
     //Changes animation states when needed, depending on the current state of the player.
