@@ -22876,7 +22876,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smoothing: 0.03
   _initPos: {x: 0, y: 0, z: 0}
-  _openPos: {x: 0, y: 5.5, z: 0}
+  _openPos: {x: 0, y: 4.5, z: 0}
 --- !u!65 &1075008576
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -30061,7 +30061,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _smoothing: 0.1
   _initPos: {x: 0, y: 0, z: 0}
-  _openPos: {x: 0, y: 4.5, z: 0}
+  _openPos: {x: 0, y: 5.5, z: 0}
 --- !u!65 &1293841830
 BoxCollider:
   m_ObjectHideFlags: 0
