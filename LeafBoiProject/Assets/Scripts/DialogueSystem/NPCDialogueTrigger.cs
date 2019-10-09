@@ -6,37 +6,41 @@ public class NPCDialogueTrigger : MonoBehaviour{
     
     public Dialogue dialogue;
     public GameObject player;
+    public bool inDialogue;
 
-    private bool _inDialogue;
     private Vector3 _targetDir;
-    private Quaternion startRotation;
+    private Quaternion _startRotation;
     private Rigidbody _rb;
+
+    [SerializeField] protected Collider col;
 
     private void Start()
     {
         _rb = GetComponent<Rigidbody>();
-        startRotation = transform.rotation;
+        _startRotation = transform.rotation;
     }
 
     private void Update()
     {
-        if (_inDialogue)
+        if (inDialogue)
         {
             LookAtPlayer();
         }
         else
         {
-            transform.rotation = Quaternion.Slerp(transform.rotation, startRotation, 0.05f);
+            transform.rotation = Quaternion.Slerp(transform.rotation, _startRotation, 0.05f);
         }
+
+        col.enabled = !inDialogue;
     }
 
     public void ResetRotation() {
-        _inDialogue = false;
+        inDialogue = false;
     }
 
     public void TriggerDialogue(){
         FindObjectOfType<DialogueManager>().StartDialogue(dialogue);
-        _inDialogue = true;
+        inDialogue = true;
     }
 
     public void LookAtPlayer() {

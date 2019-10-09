@@ -8,6 +8,8 @@ public class GroundCheck : MonoBehaviour
     public float dToGround;
     public PlayerController player;
 
+    public ParticleSystem ps;
+
 
     // Update is called once per frame
     void FixedUpdate()
@@ -18,5 +20,9 @@ public class GroundCheck : MonoBehaviour
         {
             player.Grounded();
         }
+
+        var em = ps.emission;
+
+        em.enabled = groundRay;
     }
 }
