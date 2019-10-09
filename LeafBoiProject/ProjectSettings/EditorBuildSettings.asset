@@ -9,15 +9,18 @@ EditorBuildSettings:
     path: Assets/Scenes/TestScene.unity
     guid: cbfe36cfddfde964d9dfce63a355d5dd
   - enabled: 0
-    path: Assets/Scenes/CharacterControllerTestScene.unity
-    guid: a64bce010cb14c643b81442783ee021c
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
     path: Assets/Scenes/Main Menu.unity
     guid: 6b37c099bde1016419d4d56045bd598c
   - enabled: 0
-    path: Assets/Scenes/Level_Test.unity
-    guid: ea0d7faed23fe2d408212300a6b7fa4c
-  - enabled: 1
     path: Assets/Scenes/Village_TestScene.unity
     guid: 73629d94a56625d4bbd49ad0f56a7792
+  - enabled: 1
+    path: Assets/Scenes/MechanicsTestScene.unity
+    guid: 182a2eea49f1fe943800119fe1ea997b
+  - enabled: 1
+    path: Assets/Scenes/Level_Test.unity
+    guid: ea0d7faed23fe2d408212300a6b7fa4c
   m_configObjects: {}

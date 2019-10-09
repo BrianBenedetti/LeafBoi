@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FrameRateCap : MonoBehaviour
 {
@@ -17,7 +18,17 @@ public class FrameRateCap : MonoBehaviour
 	void Update()
 	{
 		deltaTime += (Time.unscaledDeltaTime - deltaTime) * 0.1f;
-	}
+
+        if (Input.GetKeyDown(KeyCode.P))
+        {
+            SceneManager.LoadScene(2, LoadSceneMode.Single);
+        }
+
+        if (Input.GetKeyDown(KeyCode.O))
+        {
+            SceneManager.LoadScene(1, LoadSceneMode.Single);
+        }
+    }
 
 	void OnGUI()
 	{
