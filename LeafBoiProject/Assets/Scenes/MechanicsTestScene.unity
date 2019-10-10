@@ -29723,7 +29723,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1292825331}
-  m_LocalRotation: {x: 0.044958007, y: -0.88624436, z: 0.08804351, w: 0.4525461}
+  m_LocalRotation: {x: 0.044958, y: -0.8862444, z: 0.08804351, w: 0.45254606}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -42800,6 +42800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d797c4b8ca490314c9c318ea4425de36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pmt: {fileID: 1889726328}
   controls: {fileID: 857402045}
   options: {fileID: 1582191605}
   isPaused: 0
@@ -43027,6 +43028,7 @@ GameObject:
   - component: {fileID: 1889726332}
   - component: {fileID: 1889726331}
   - component: {fileID: 1889726330}
+  - component: {fileID: 1889726328}
   m_Layer: 5
   m_Name: PauseMainBoard
   m_TagString: Untagged
@@ -43034,6 +43036,27 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &1889726328
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1889726327}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 458741c5d999a4f448d60f03d6f60ded, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buttons:
+  - {fileID: 130927368}
+  - {fileID: 1311272501}
+  - {fileID: 146185323}
+  - {fileID: 2111332999}
+  transitionLimit: 0.3
+  pause: {fileID: 1872237201}
+  controlPanel: {fileID: 857402045}
+  optionsPanel: {fileID: 1582191605}
 --- !u!224 &1889726329
 RectTransform:
   m_ObjectHideFlags: 0
