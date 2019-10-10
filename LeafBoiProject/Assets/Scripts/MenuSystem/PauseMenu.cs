@@ -6,7 +6,6 @@ using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
-    [SerializeField] protected PauseMenuTraverse pmt;
     [SerializeField] protected GameObject controls;
     [SerializeField] protected GameObject options;
 
@@ -52,7 +51,6 @@ public class PauseMenu : MonoBehaviour
        isPaused = true;
        Time.timeScale = 0f;
        pauseBackground.SetActive(true);
-        pmt.StartPause();
     }
 
     public void Resume(){

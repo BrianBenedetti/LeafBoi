@@ -5,11 +5,15 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuScript : MonoBehaviour{
 
+    public GameObject mainMenu;
+    public GameObject pressText;
+
     private void Update()
     {
         if (Input.anyKeyDown && !(Input.GetKeyDown(KeyCode.Escape)))
         {
-            NewGame();
+            mainMenu.SetActive(true);
+            pressText.SetActive(false);
         }
 
         if (Input.GetKeyDown(KeyCode.Escape))
