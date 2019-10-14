@@ -412,7 +412,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerFacing(GameObject lookAt)
     {
-        if (lookAt.name != "Elder")
+        if (lookAt.gameObject.name != "Elder")
         {
             Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, 0, lookAt.transform.position.z - transform.position.z);
             Quaternion lookRotation = Quaternion.LookRotation(lookDir);

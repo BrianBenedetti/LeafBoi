@@ -5,10 +5,11 @@ using UnityEngine;
 public class BezierFollow : MonoBehaviour
 {
     [SerializeField] protected Transform[] routes;
+    [SerializeField] protected NPCDialogueTrigger _dTrigger;
+    [SerializeField] protected float _speedMod;
     private int _routeToGo;
     private float _loopParam;
     private Vector3 _villagerPos;
-    private float _speedMod;
     private bool _coroutineAllowed;
 
     // Start is called before the first frame update
@@ -16,17 +17,23 @@ public class BezierFollow : MonoBehaviour
     {
         _routeToGo = 0;
         _loopParam = 0f;
-        _speedMod = 0.5f;
         _coroutineAllowed = true;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (_coroutineAllowed)
+        if (_coroutineAllowed && !(_dTrigger.inDialogue))
         {
             StartCoroutine(GoByRoute(_routeToGo));
         }
+
+        if (_dTrigger.inDialogue)
+        {
+            StopAllCoroutines();
+            _coroutineAllowed = true;
+        }
+
     }
 
     private IEnumerator GoByRoute(int routeNum)

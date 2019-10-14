@@ -1464,7 +1464,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124289176}
-  m_LocalRotation: {x: 0.07959468, y: 0.0000000029707756, z: -2.3721053e-10, w: 0.9968273}
+  m_LocalRotation: {x: 0.07959469, y: -0.0000000029707792, z: 2.3721083e-10, w: 0.9968273}
   m_LocalPosition: {x: 226.5, y: 24.375486, z: 173.31693}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -5862,8 +5862,9 @@ MonoBehaviour:
   dialogueText: {fileID: 749217845}
   convActive: 0
   animator: {fileID: 1285678419}
-  player: {fileID: 0}
-  villagers: []
+  player: {fileID: 849368640}
+  villagers:
+  - {fileID: 1778280876}
 --- !u!4 &734882119
 Transform:
   m_ObjectHideFlags: 0
@@ -7430,6 +7431,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1040885354 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6609021923988588369, guid: d254bd83c34e9b246889284a8292bc85,
+    type: 3}
+  m_PrefabInstance: {fileID: 756444493396739841}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1778280876}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107bf4bd78991ee4588955950258cfb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1054810587
@@ -10023,7 +10036,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494601253}
-  m_LocalRotation: {x: 0.09409194, y: -0.0000000032778316, z: 0.00000019024579, w: 0.99556357}
+  m_LocalRotation: {x: 0.09409195, y: -0.000000018112884, z: 0.00000019164787, w: 0.99556357}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -12076,6 +12089,12 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1223156292520096457, guid: a4f474de89fbcf74cb277cd3f517ade4,
     type: 3}
   m_PrefabInstance: {fileID: 316487795}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1778280876 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6609021923988588374, guid: d254bd83c34e9b246889284a8292bc85,
+    type: 3}
+  m_PrefabInstance: {fileID: 756444493396739841}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &1779436367
 GameObject:
@@ -14284,6 +14303,16 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 849368640}
+    - target: {fileID: 756444492932833733, guid: d254bd83c34e9b246889284a8292bc85,
+        type: 3}
+      propertyPath: _dTrigger
+      value: 
+      objectReference: {fileID: 1040885354}
+    - target: {fileID: 756444492932833733, guid: d254bd83c34e9b246889284a8292bc85,
+        type: 3}
+      propertyPath: _speedMod
+      value: 0.06
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d254bd83c34e9b246889284a8292bc85, type: 3}
 --- !u!1001 &1053613934405634422
