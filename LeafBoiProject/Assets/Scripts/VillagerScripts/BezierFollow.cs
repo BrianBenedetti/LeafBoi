@@ -10,6 +10,7 @@ public class BezierFollow : MonoBehaviour
     private int _routeToGo;
     private float _loopParam;
     private Vector3 _villagerPos;
+    private Vector3 _villagerNextPos;
     private bool _coroutineAllowed;
 
     // Start is called before the first frame update
@@ -50,6 +51,13 @@ public class BezierFollow : MonoBehaviour
 
             _villagerPos = Mathf.Pow(1 - _loopParam, 3) * p1 + 3 * Mathf.Pow(1 - _loopParam, 2) * _loopParam * p2 + 3 * (1 - _loopParam) * Mathf.Pow(_loopParam, 2) * p3 + Mathf.Pow(_loopParam, 3) * p4;
 
+            _villagerNextPos = Mathf.Pow(1 - (_loopParam + _speedMod), 3) * p1 + 3 * Mathf.Pow(1 - (_loopParam + _speedMod), 2) * (_loopParam + _speedMod) * p2 + 3 * (1 - (_loopParam + _speedMod)) * Mathf.Pow((_loopParam + _speedMod), 2) * p3 + Mathf.Pow((_loopParam + _speedMod), 3) * p4;
+
+            Vector3 movementDiff = _villagerNextPos - _villagerPos;
+            //Quaternion lookDir = Quaternion.LookRotation(movementDiff);
+            //transform.rotation = Quaternion.Slerp(transform.rotation, lookDir, Time.deltaTime * 2f);
+            transform.rotation = Quaternion.LookRotation(movementDiff);
+
             transform.position = _villagerPos;
             yield return new WaitForEndOfFrame();
         }
@@ -63,5 +71,10 @@ public class BezierFollow : MonoBehaviour
         }
 
         _coroutineAllowed = true;
+    }
+
+    private void VillagerFacing()
+    {
+        
     }
 }
