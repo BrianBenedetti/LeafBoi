@@ -3264,7 +3264,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 124289176}
-  m_LocalRotation: {x: 0.07959449, y: -0.000000020621474, z: 0.0000000016465798, w: 0.99682736}
+  m_LocalRotation: {x: 0.079594485, y: 0.000000020499987, z: -0.000000001636879, w: 0.99682736}
   m_LocalPosition: {x: 515.1, y: 36.285484, z: -288.9831}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -6894,8 +6894,12 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 576785090}
-    m_RemovedComponents:
-    - {fileID: 2296191104075237939, guid: d254bd83c34e9b246889284a8292bc85, type: 3}
+    - target: {fileID: 6609021923988588374, guid: d254bd83c34e9b246889284a8292bc85,
+        type: 3}
+      propertyPath: m_Name
+      value: movingVillager
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d254bd83c34e9b246889284a8292bc85, type: 3}
 --- !u!1001 &293948264
 PrefabInstance:
@@ -16400,7 +16404,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 733329512}
-  m_LocalRotation: {x: 0.075967394, y: -0.000000006714332, z: -0.00000013575365, w: 0.99711037}
+  m_LocalRotation: {x: 0.075967394, y: 0.000000027598992, z: -0.0000001383679, w: 0.99711037}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -33161,7 +33165,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1494601253}
-  m_LocalRotation: {x: 0.094091766, y: -0.0000000013111163, z: 0.00000018934794, w: 0.99556357}
+  m_LocalRotation: {x: 0.09409175, y: -0.00000003598151, z: 0.00000019262468, w: 0.99556357}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
