@@ -38,6 +38,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     protected bool _dJumping;
     private bool _interacting;
+    private bool _moving = false;
+
 
     private float _facingAngle;
     private float _playerRotation;
@@ -55,7 +57,12 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected Animator anim;
     [SerializeField] protected float jumpDelay;
     [SerializeField] protected float speedCharge;
+    [SerializeField] protected float idleLimit;
     private bool _jumpPrep;
+    public float dToGround;
+    public float yAxis;
+    private float idleTimer;
+    private bool idle2;
     private const float OFFSET = -90;
 
     public void endDialogue()
@@ -85,8 +92,10 @@ public class PlayerController : MonoBehaviour
 
         _controls.Player.Movement.performed += context => _moveAxis = context.ReadValue<Vector2>();
         _controls.Player.Movement.performed += context => _playerAxis = context.ReadValue<Vector2>();
+        _controls.Player.Movement.performed += context => _moving = true;
         _controls.Player.Movement.performed += context => HandleTurn();
         _controls.Player.Movement.canceled += context => _moveAxis = Vector2.zero;
+        _controls.Player.Movement.canceled += context => _moving = false;
 
         _controls.Player.Interact.performed += context => HandleInteraction();
 
@@ -132,7 +141,7 @@ public class PlayerController : MonoBehaviour
     private void AnimatorHandler()
     {
         //Setting Velocity to different values
-        if (_rb.velocity.y < -0.01f )
+        if (_rb.velocity.y < -0.01f  || (_rb.velocity.y > 0.01f && !_jumping))
         {
             anim.SetBool("Falling", true);
         }
@@ -140,7 +149,7 @@ public class PlayerController : MonoBehaviour
         if (_rb.velocity.y > 0)
         {
             //anim.SetBool("Jumping", true);  
-            anim.SetBool("Falling", false);
+            //anim.SetBool("Falling", false);
         }
 
         if (anim.GetBool("Tired") && state != 3)
@@ -149,7 +158,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Setting the Speed to different values to be used by the blend trees
-        if (!(new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude == 0))
+        if (!(new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude == 0) && _moving)
         {
             _magSpeed = Mathf.Lerp(_magSpeed, new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude, speedCharge);
         }
@@ -161,6 +170,25 @@ public class PlayerController : MonoBehaviour
         anim.SetFloat("Speed", _magSpeed);
         anim.SetFloat("YSpeed",_magYSpeed);
 
+        if (_magSpeed == 0 && _magYSpeed == 0)
+        {
+            idleTimer += Time.deltaTime;
+        }
+        else {
+            idleTimer = 0;
+        }
+
+        if (idleTimer > idleLimit)
+        {
+            idle2 = true;
+        }
+        else {
+            idle2 = false;
+        }
+
+        anim.SetBool("Idle2", idle2);
+        
+
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
         anim.SetBool("Grounded", _grounded);
         anim.SetBool("Glide", _gliding);
@@ -170,6 +198,7 @@ public class PlayerController : MonoBehaviour
     //Handles the movement of the player depending on their current state and any actions that are taking place.
     private void MovementHandler()
     {
+
         //Handles how the dash works, so if dash is pressed player is rocketed forward by a set amount of speed that wont cause them to clip into walls
         if (!_dashing)
         {
@@ -188,7 +217,6 @@ public class PlayerController : MonoBehaviour
             Vector3 inputZ = new Vector3(0f, 0f, _moveAxis.y);
 
             _moveDir = forward * _moveAxis.y + right * _moveAxis.x;
-
             _rb.velocity = new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed);
         }
         else
@@ -216,7 +244,7 @@ public class PlayerController : MonoBehaviour
         if (!_gliding && _rb.velocity.y < 0.1)
         {
             _rb.velocity += Vector3.up * Physics.gravity.y * 2.5f * (2.5f - 1) * Time.deltaTime;
-        }
+        }               
 
         if (state.Equals(0) || state.Equals(2))
         {
@@ -325,6 +353,25 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    public void LoadGame()
+    {
+        PlayerData data = SaveSystem.LoadPlayer();
+
+        Vector3 pos;
+        Vector3 rot;
+
+        pos.x = data.position[0];
+        pos.y = data.position[1];
+        pos.z = data.position[2];
+
+        rot.x = data.rotation[0];
+        rot.y = data.rotation[1];
+        rot.z = data.rotation[2];
+
+        transform.position = pos;
+        transform.rotation = Quaternion.Euler(rot);
+    }
+
     //Handles what happens when any of the buttons that entail a jump are pressed.
     private void HandleJump()
     {
@@ -357,7 +404,7 @@ public class PlayerController : MonoBehaviour
         //if (_playerAxis.magnitude > 0.1f) { _facingAngle = Mathf.Atan2(-_playerAxis.y, _playerAxis.x) * Mathf.Rad2Deg + 360; }
         //Quaternion target = Quaternion.Euler(transform.rotation.x, _facingAngle, transform.rotation.z);
         //transform.rotation = Quaternion.Slerp(transform.rotation, target, Time.deltaTime * smoothing);
-        if (!inDialogue)
+        if (!inDialogue && _moving)
         {
             transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(_moveDir) * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
         }
