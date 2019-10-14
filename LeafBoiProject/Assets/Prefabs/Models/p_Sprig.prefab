@@ -92,7 +92,6 @@ MonoBehaviour:
   inDialogue: 0
   interactable: {fileID: 0}
   state: 0
-  interact: {fileID: 0}
   _secondJump: 0
   _gliding: 0
   _canDash: 0
@@ -105,6 +104,8 @@ MonoBehaviour:
   _maxFallVelocity: 1.5
   _dashMult: 10
   anim: {fileID: 1223156292520096458}
+  jumpDelay: 0
+  speedCharge: 0
 --- !u!114 &1223156292520096460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -148,6 +149,7 @@ MonoBehaviour:
   rb: {fileID: 1223156292520096459}
   dToGround: 0.1
   player: {fileID: 1223156292520096461}
+  ps: {fileID: 0}
 --- !u!1001 &555583055338070193
 PrefabInstance:
   m_ObjectHideFlags: 0
