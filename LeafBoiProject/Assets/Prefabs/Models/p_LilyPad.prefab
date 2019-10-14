@@ -43,6 +43,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: LilyLPV2
       objectReference: {fileID: 0}
+    - target: {fileID: -6985315273916663340, guid: 40e32eaee531da447871f77b306882a2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbe24486f2cd2cd449952643c90db313, type: 2}
     - target: {fileID: -6843134786925947308, guid: 40e32eaee531da447871f77b306882a2,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -158,6 +163,16 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3179280764285410820, guid: 40e32eaee531da447871f77b306882a2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbe24486f2cd2cd449952643c90db313, type: 2}
+    - target: {fileID: 3749968072063166092, guid: 40e32eaee531da447871f77b306882a2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbe24486f2cd2cd449952643c90db313, type: 2}
     - target: {fileID: 3844825332942142584, guid: 40e32eaee531da447871f77b306882a2,
         type: 3}
       propertyPath: m_LocalRotation.y
@@ -178,6 +193,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8454049883525829194, guid: 40e32eaee531da447871f77b306882a2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: dbe24486f2cd2cd449952643c90db313, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 40e32eaee531da447871f77b306882a2, type: 3}
 --- !u!4 &5377957183952718400 stripped
