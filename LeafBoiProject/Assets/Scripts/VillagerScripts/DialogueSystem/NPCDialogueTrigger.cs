@@ -13,6 +13,7 @@ public class NPCDialogueTrigger : MonoBehaviour{
     private Rigidbody _rb;
 
     [SerializeField] protected Collider col;
+    [SerializeField] protected Animator anim;
 
     private void Start()
     {
@@ -22,6 +23,9 @@ public class NPCDialogueTrigger : MonoBehaviour{
 
     private void Update()
     {
+        if (name.Contains("moving"))
+        anim.SetBool("inDialogue", inDialogue);
+
         if (inDialogue)
         {
             LookAtPlayer();
@@ -46,8 +50,9 @@ public class NPCDialogueTrigger : MonoBehaviour{
     public void LookAtPlayer() {
         if (name != "Elder")
         {
-            Vector3 lookDir = new Vector3(player.transform.position.x - transform.position.x, transform.position.y, player.transform.position.z - transform.position.z);
-            transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.LookRotation(lookDir), Time.deltaTime * 2f);
+            Vector3 lookDir = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
+            Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * 2f);
         }
     }
 }
