@@ -47,8 +47,8 @@ SkinnedMeshRenderer:
   m_BlendShapeWeights: []
   m_RootBone: {fileID: 0}
   m_AABB:
-    m_Center: {x: 0.22058767, y: -0.0598889, z: -0.16728821}
-    m_Extent: {x: 0.04598871, y: 0.4845779, z: 0.1406644}
+    m_Center: {x: 0.0073528886, y: -0.001996277, z: -0.005576276}
+    m_Extent: {x: 0.0015330082, y: 0.016152535, z: 0.0046888012}
   m_DirtyAABB: 0
 --- !u!183 &7673574352323744700
 Cloth:
@@ -439,7 +439,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -1504981713932161579, guid: 8284565e6184ae4449e254bdc551a1a5, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 8284565e6184ae4449e254bdc551a1a5, type: 3}
 --- !u!1 &905319633970641891 stripped
 GameObject:

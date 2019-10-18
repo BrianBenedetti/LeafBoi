@@ -21,6 +21,7 @@ public class GroundCheck : MonoBehaviour
     public bool backStop;
     public bool rightStop;
     public bool leftStop;
+    public LayerMask layerMask;
 
     // Update is called once per frame
     void FixedUpdate()
