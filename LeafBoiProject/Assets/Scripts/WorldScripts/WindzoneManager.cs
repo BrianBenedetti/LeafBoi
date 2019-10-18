@@ -5,13 +5,17 @@ using UnityEngine;
 public class WindzoneManager : MonoBehaviour
 {
     [SerializeField]
-    protected Vector3 _windDirection;
+    protected float _glideVelocity;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Rigidbody>().AddForce(_windDirection);
+            if (other.gameObject.GetComponent<PlayerController>().gliding)
+            {
+                Rigidbody playerRg = other.gameObject.GetComponent<Rigidbody>();
+                playerRg.velocity = new Vector3(playerRg.velocity.x, _glideVelocity, playerRg.velocity.z);
+            }
         }
     }
 
@@ -19,7 +23,11 @@ public class WindzoneManager : MonoBehaviour
     {
         if (other.gameObject.tag == "Player")
         {
-            other.gameObject.GetComponent<Rigidbody>().AddForce(_windDirection);
+            if (other.gameObject.GetComponent<PlayerController>().gliding)
+            {
+                Rigidbody playerRg = other.gameObject.GetComponent<Rigidbody>();
+                playerRg.velocity = new Vector3(playerRg.velocity.x, _glideVelocity, playerRg.velocity.z);
+            }
         }
     }
 }
