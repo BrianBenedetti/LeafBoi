@@ -48,21 +48,23 @@ public class PlayerController : MonoBehaviour
     private float _magYSpeed;
     private bool _blockRotationPlayer;
     private Camera _cam;
-    private Vector3 _moveDir;
+    public Vector3 _moveDir;
 
     [SerializeField] protected float _jumpHeight;
     [SerializeField] protected float _dashLimit;
     [SerializeField] protected float _maxFallVelocity;
     [SerializeField] protected float _dashMult;
-    [SerializeField] protected Animator anim;
-    [SerializeField] protected float jumpDelay;
-    [SerializeField] protected float speedCharge;
-    [SerializeField] protected float idleLimit;
+    [SerializeField] protected Animator _anim;
+    [SerializeField] protected float _jumpDelay;
+    [SerializeField] protected float _speedCharge;
+    [SerializeField] protected float _idleLimit;
+    [SerializeField] protected GroundCheck _check;
+    [SerializeField] protected float glideFactor;
+
     private bool _jumpPrep;
-    public float dToGround;
-    public float yAxis;
     private float idleTimer;
     private bool idle2;
+    private bool stuck;
     private const float OFFSET = -90;
 
     public void endDialogue()
@@ -119,11 +121,11 @@ public class PlayerController : MonoBehaviour
 
         if (!inDialogue)
         {
-        //Unfreezes player if not paused and only goes through these methods during unpaused state
-        _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            //Unfreezes player if not paused and only goes through these methods during unpaused state
+            _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
             AnimatorHandler();
 
-            if (anim.GetFloat("Speed") > 0.1f)
+            if (_anim.GetFloat("Speed") > 0.1f)
             {
                 PlayerFacing();
             }
@@ -141,9 +143,9 @@ public class PlayerController : MonoBehaviour
     private void AnimatorHandler()
     {
         //Setting Velocity to different values
-        if (_rb.velocity.y < -0.01f  || (_rb.velocity.y > 0.01f && !_jumping))
+        if (_rb.velocity.y < -0.01f || (_rb.velocity.y > 0.01f && !_jumping))
         {
-            anim.SetBool("Falling", true);
+            _anim.SetBool("Falling", true);
         }
 
         if (_rb.velocity.y > 0)
@@ -152,7 +154,7 @@ public class PlayerController : MonoBehaviour
             //anim.SetBool("Falling", false);
         }
 
-        if (anim.GetBool("Tired") && state != 3)
+        if (_anim.GetBool("Tired") && state != 3)
         {
             state = 0;
         }
@@ -160,15 +162,15 @@ public class PlayerController : MonoBehaviour
         //Setting the Speed to different values to be used by the blend trees
         if (!(new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude == 0) && _moving)
         {
-            _magSpeed = Mathf.Lerp(_magSpeed, new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude, speedCharge);
+            _magSpeed = Mathf.Lerp(_magSpeed, new Vector3(_rb.velocity.x, 0, _rb.velocity.z).magnitude, _speedCharge);
         }
         else {
             _magSpeed = 0;
         }
         _magSpeed = Mathf.Abs(_magSpeed);
 
-        anim.SetFloat("Speed", _magSpeed);
-        anim.SetFloat("YSpeed",_magYSpeed);
+        _anim.SetFloat("Speed", _magSpeed);
+        _anim.SetFloat("YSpeed", _magYSpeed);
 
         if (_magSpeed == 0 && _magYSpeed == 0)
         {
@@ -178,7 +180,7 @@ public class PlayerController : MonoBehaviour
             idleTimer = 0;
         }
 
-        if (idleTimer > idleLimit)
+        if (idleTimer > _idleLimit)
         {
             idle2 = true;
         }
@@ -186,12 +188,12 @@ public class PlayerController : MonoBehaviour
             idle2 = false;
         }
 
-        anim.SetBool("Idle2", idle2);
-        
+        _anim.SetBool("Idle2", idle2);
+
 
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
-        anim.SetBool("Grounded", _grounded);
-        anim.SetBool("Glide", _gliding);
+        _anim.SetBool("Grounded", _grounded);
+        _anim.SetBool("Glide", _gliding);
 
     }
 
@@ -217,7 +219,15 @@ public class PlayerController : MonoBehaviour
             Vector3 inputZ = new Vector3(0f, 0f, _moveAxis.y);
 
             _moveDir = forward * _moveAxis.y + right * _moveAxis.x;
-            _rb.velocity = new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed);
+
+            if (!_check.frontStop && !_check.backStop && !_check.rightStop && !_check.leftStop && !stuck)
+            {
+                _rb.velocity = new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed);
+            }
+            else
+            {
+                _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+            }
         }
         else
         {
@@ -236,7 +246,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_rb.velocity.y < -1f)
             {
-                _rb.velocity += Vector3.down * 1.5f * Physics.gravity.y * Time.deltaTime;
+                _rb.velocity += Vector3.down * glideFactor * Physics.gravity.y * Time.deltaTime;
             }
         }
 
@@ -244,7 +254,7 @@ public class PlayerController : MonoBehaviour
         if (!_gliding && _rb.velocity.y < 0.1)
         {
             _rb.velocity += Vector3.up * Physics.gravity.y * 2.5f * (2.5f - 1) * Time.deltaTime;
-        }               
+        }
 
         if (state.Equals(0) || state.Equals(2))
         {
@@ -276,7 +286,7 @@ public class PlayerController : MonoBehaviour
         if (_canDash && state.Equals(2))
         {
             _dashing = true;
-            anim.SetBool("Dash", true);
+            _anim.SetBool("Dash", true);
             _canDash = false;
         }
     }
@@ -323,7 +333,7 @@ public class PlayerController : MonoBehaviour
             {
                 ButtonManager button = interactable.GetComponent<ButtonManager>();
                 button.interactionHandler();
-                anim.SetTrigger("Interaction");
+                _anim.SetTrigger("Interaction");
             }
 
             if (interactable.GetComponent<Interaction>().Instrument)
@@ -338,6 +348,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    private IEnumerator onStuck()
+    {
+        stuck = true;
+        _rb.velocity = new Vector3(0, _rb.velocity.y, 0);
+        yield return new WaitForSeconds(Mathf.Epsilon);
+        stuck = false;
+    }
+
     public void Grounded()
     {
         if (!_jumpPrep)
@@ -346,10 +364,10 @@ public class PlayerController : MonoBehaviour
             _secondJump = true;
             _gliding = false;
             _canDash = true;
-            anim.SetBool("Falling", false);
-            anim.SetBool("Jumping", false);
-            anim.SetBool("Dash", false);
-            anim.SetBool("DoubleJump", false);
+            _anim.SetBool("Falling", false);
+            _anim.SetBool("Jumping", false);
+            _anim.SetBool("Dash", false);
+            _anim.SetBool("DoubleJump", false);
         }
     }
 
@@ -379,14 +397,14 @@ public class PlayerController : MonoBehaviour
         {
             if (!_grounded && _secondJump && !_interacting && state.Equals(1) && !inDialogue)
             {
-                anim.SetBool("DoubleJump", true);
+                _anim.SetBool("DoubleJump", true);
                 _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
                 _secondJump = false;
             }
 
             if (_grounded && !_interacting && !inDialogue)
             {
-                anim.SetBool("Jumping", true);
+                _anim.SetBool("Jumping", true);
                 _jumpPrep = true;
                 StartCoroutine(setGrounded());
             }
@@ -396,6 +414,13 @@ public class PlayerController : MonoBehaviour
                 _dManager.DisplayNextSentence();
             }
         }
+    }
+
+    private bool checkStuck()
+    {
+        
+
+        return false;
     }
 
     //Returns the quaternion angle that the player should be facing when they move.
@@ -412,7 +437,7 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerFacing(GameObject lookAt)
     {
-        if (lookAt.name != "Elder")
+        if (lookAt.gameObject.name != "Elder")
         {
             Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, 0, lookAt.transform.position.z - transform.position.z);
             Quaternion lookRotation = Quaternion.LookRotation(lookDir);
@@ -428,7 +453,7 @@ public class PlayerController : MonoBehaviour
 
     private IEnumerator setGrounded()
     {
-        yield return new WaitForSeconds(jumpDelay);
+        yield return new WaitForSeconds(_jumpDelay);
         _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 1.35f * _jumpHeight));
         yield return new WaitForSeconds(0.01f);
         _grounded = false;

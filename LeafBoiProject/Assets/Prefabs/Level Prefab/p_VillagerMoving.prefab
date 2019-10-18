@@ -392,7 +392,7 @@ MonoBehaviour:
   routes:
   - {fileID: 756444493824994931}
   - {fileID: 756444492639642297}
-  _speedMod: 0.06
+  _speedMod: 0.08
   _dTrigger: {fileID: 6609021923988588369}
 --- !u!1001 &756444492369765719
 PrefabInstance:
@@ -404,7 +404,7 @@ PrefabInstance:
     - target: {fileID: 5893127437631087105, guid: db83cc1c0dbe1be4c9293b0a8868e777,
         type: 3}
       propertyPath: m_Name
-      value: p_Villager
+      value: movingVillager
       objectReference: {fileID: 0}
     - target: {fileID: 5893127437631087106, guid: db83cc1c0dbe1be4c9293b0a8868e777,
         type: 3}
@@ -466,6 +466,11 @@ PrefabInstance:
       propertyPath: m_LocalScale.x
       value: 0.75000006
       objectReference: {fileID: 0}
+    - target: {fileID: 5893127437631087110, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+        type: 3}
+      propertyPath: anim
+      value: 
+      objectReference: {fileID: 8999854166063842157}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: db83cc1c0dbe1be4c9293b0a8868e777, type: 3}
 --- !u!1 &6609021923988588374 stripped
@@ -492,3 +497,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 107bf4bd78991ee4588955950258cfb5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!95 &8999854166063842157 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8546294890845054522, guid: db83cc1c0dbe1be4c9293b0a8868e777,
+    type: 3}
+  m_PrefabInstance: {fileID: 756444492369765719}
+  m_PrefabAsset: {fileID: 0}
