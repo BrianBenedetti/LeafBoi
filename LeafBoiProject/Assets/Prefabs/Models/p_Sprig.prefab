@@ -87,7 +87,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   smoothing: 5
   walkSmoothing: 0.8
-  speed: 10
+  speed: 12
   pause: 0
   inDialogue: 0
   interactable: {fileID: 0}
@@ -99,13 +99,17 @@ MonoBehaviour:
   _jumping: 0
   _dashing: 0
   _dJumping: 0
+  _moveDir: {x: 0, y: 0, z: 0}
   _jumpHeight: 2
   _dashLimit: 0.15
   _maxFallVelocity: 1.5
   _dashMult: 10
-  anim: {fileID: 1223156292520096458}
-  jumpDelay: 0
-  speedCharge: 0
+  _anim: {fileID: 1223156292520096458}
+  _jumpDelay: 0.15
+  _speedCharge: 0.025
+  _idleLimit: 1
+  _check: {fileID: 1830057666}
+  glideFactor: 0.5
 --- !u!114 &1223156292520096460
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -127,7 +131,7 @@ CapsuleCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1223156292520096463}
-  m_Material: {fileID: 13400000, guid: b9e0c06d2faa62c46902d95e9564fd6e, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.46553144
@@ -149,7 +153,17 @@ MonoBehaviour:
   rb: {fileID: 1223156292520096459}
   dToGround: 0.1
   player: {fileID: 1223156292520096461}
-  ps: {fileID: 0}
+  ps: {fileID: 994903938340641879}
+  maxDist: 2.3
+  minAngle: 85
+  maxAngle: 95
+  dotResist: 0.5
+  cAngle: 45
+  yAxis: 1.5
+  frontStop: 0
+  backStop: 0
+  rightStop: 0
+  leftStop: 0
 --- !u!1001 &555583055338070193
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -311,6 +325,12 @@ PrefabInstance:
 --- !u!4 &994903938340641878 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1315142592625096834, guid: 1388083475356024db9605037da8d61d,
+    type: 3}
+  m_PrefabInstance: {fileID: 2273975743447426260}
+  m_PrefabAsset: {fileID: 0}
+--- !u!198 &994903938340641879 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 1315142592625096835, guid: 1388083475356024db9605037da8d61d,
     type: 3}
   m_PrefabInstance: {fileID: 2273975743447426260}
   m_PrefabAsset: {fileID: 0}

@@ -59,6 +59,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected float _speedCharge;
     [SerializeField] protected float _idleLimit;
     [SerializeField] protected GroundCheck _check;
+    [SerializeField] protected float glideFactor;
 
     private bool _jumpPrep;
     private float idleTimer;
@@ -245,7 +246,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_rb.velocity.y < -1f)
             {
-                _rb.velocity += Vector3.down * 1.5f * Physics.gravity.y * Time.deltaTime;
+                _rb.velocity += Vector3.down * glideFactor * Physics.gravity.y * Time.deltaTime;
             }
         }
 
