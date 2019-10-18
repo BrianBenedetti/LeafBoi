@@ -14,6 +14,7 @@ public class PlayerController : MonoBehaviour
 
     public bool pause;
     public bool inDialogue;
+    public bool gliding = false;
 
     public GameObject interactable;
     public int state = 0;
@@ -25,8 +26,6 @@ public class PlayerController : MonoBehaviour
     private bool _grounded = true;
     [SerializeField]
     protected bool _secondJump = true;
-    [SerializeField]
-    protected bool _gliding = false;
     [SerializeField]
     protected bool _canDash = true;
     [SerializeField]
@@ -193,7 +192,7 @@ public class PlayerController : MonoBehaviour
 
         //Setting grounded and gliding values based on booleans that are handled at other stages in the script
         _anim.SetBool("Grounded", _grounded);
-        _anim.SetBool("Glide", _gliding);
+        _anim.SetBool("Glide", gliding);
 
     }
 
@@ -242,7 +241,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //If the player holds the button for gliding the players max fall velocity will be reduced (Should probably change this to add a force, will work out specifics later after discussing) 
-        if (_gliding)
+        if (gliding)
         {
             if (_rb.velocity.y < -1f)
             {
@@ -251,7 +250,7 @@ public class PlayerController : MonoBehaviour
         }
 
         //Makes fall feel faster in order to be able to distinguish between normal fall and glide
-        if (!_gliding && _rb.velocity.y < 0.1)
+        if (!gliding && _rb.velocity.y < 0.1)
         {
             _rb.velocity += Vector3.up * Physics.gravity.y * 2.5f * (2.5f - 1) * Time.deltaTime;
         }
@@ -296,18 +295,18 @@ public class PlayerController : MonoBehaviour
     {
         if (!_grounded && state.Equals(2))
         {
-            _gliding = true;
+            gliding = true;
         }
         else
         {
-            _gliding = false;
+            gliding = false;
         }
     }
 
     //Handles what happens when any of the buttons that entail a glide are let go.
     private void EndGlide()
     {
-        _gliding = false;
+        gliding = false;
     }
 
     //Handles what happens when any of the buttons that entail an interaction are pressed.
@@ -362,7 +361,7 @@ public class PlayerController : MonoBehaviour
         {
             _grounded = true;
             _secondJump = true;
-            _gliding = false;
+            gliding = false;
             _canDash = true;
             _anim.SetBool("Falling", false);
             _anim.SetBool("Jumping", false);
@@ -414,13 +413,6 @@ public class PlayerController : MonoBehaviour
                 _dManager.DisplayNextSentence();
             }
         }
-    }
-
-    private bool checkStuck()
-    {
-        
-
-        return false;
     }
 
     //Returns the quaternion angle that the player should be facing when they move.
