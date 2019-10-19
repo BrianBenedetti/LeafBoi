@@ -66,7 +66,9 @@ public class DialogueManager : MonoBehaviour{
             {
                 source.PlayOneShot(ElderVoice);
             }
-            else {
+            else
+            if(currDialogue.name.Contains("Villager"))
+            {
                 source.PlayOneShot(VillagerVoice);
             }
 

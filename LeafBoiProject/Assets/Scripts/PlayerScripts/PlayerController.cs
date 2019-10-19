@@ -12,9 +12,8 @@ public class PlayerController : MonoBehaviour
     public AudioClip jump;
     public AudioClip Djump;
     public AudioClip BoingInteract;
-    public Transform ParticleEffectTransform;
+    public ParticleSystem DJumpSystem;
 
-    public GameObject DJumpParticleEffect;
     public GameObject BlobParticleEffect;
 
     public float smoothing;
@@ -152,15 +151,14 @@ public class PlayerController : MonoBehaviour
     private void AnimatorHandler()
     {
         //Setting Velocity to different values
-        if (_rb.velocity.y < -0.01f || (_rb.velocity.y > 0.01f && !_jumping))
+        if (_rb.velocity.y < -0.01f || (_rb.velocity.y < -0.01f && !_jumping))
         {
             _anim.SetBool("Falling", true);
         }
 
-        if (_rb.velocity.y > 0)
-        {
-            //anim.SetBool("Jumping", true);  
-            //anim.SetBool("Falling", false);
+        if (_rb.velocity.y > 0 || _grounded)
+        { 
+            _anim.SetBool("Falling", false);
         }
 
         if (_anim.GetBool("Tired") && state != 3)
@@ -303,7 +301,7 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a glide are pressed.
     private void HandleGlide()
     {
-        if (!_grounded && state.Equals(2))
+        if (!_grounded && state.Equals(1))
         {
             gliding = true;
         }
@@ -354,7 +352,6 @@ public class PlayerController : MonoBehaviour
 
             if (interactable.GetComponent<Interaction>().Blob)
             {
-                Instantiate(BlobParticleEffect,ParticleEffectTransform);
             }
 
         }
@@ -380,7 +377,6 @@ public class PlayerController : MonoBehaviour
             _secondJump = true;
             gliding = false;
             _canDash = true;
-            _anim.SetBool("Falling", false);
             _anim.SetBool("Jumping", false);
             _anim.SetBool("Dash", false);
             _anim.SetBool("DoubleJump", false);
@@ -418,7 +414,7 @@ public class PlayerController : MonoBehaviour
                 _secondJump = false;
 
                 source.PlayOneShot(Djump);
-                Instantiate(DJumpParticleEffect, ParticleEffectTransform);
+                DJumpSystem.Play();
             }
 
             if (_grounded && !_interacting && !inDialogue)
