@@ -140,8 +140,9 @@ public class GroundCheck : MonoBehaviour
             player.Grounded();
         }
 
-        var em = ps.emission;
 
+        //_AN EXAMPLE OF HOW TO CHANGE WHEN A CERTAIN PARTICLE EFFECT PLAYS_
+         var em = ps.emission;
         em.enabled = groundRay;
     }
 }

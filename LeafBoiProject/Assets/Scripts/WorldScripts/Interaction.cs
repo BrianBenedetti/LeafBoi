@@ -9,6 +9,7 @@ public class Interaction : MonoBehaviour
     public bool NPC;
     public bool Button;
     public bool Instrument;
+    public bool Blob;
 
     [SerializeField]
     protected bool interactable;

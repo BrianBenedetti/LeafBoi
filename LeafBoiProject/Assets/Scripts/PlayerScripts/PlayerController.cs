@@ -342,6 +342,11 @@ public class PlayerController : MonoBehaviour
 
             }
 
+            if (interactable.GetComponent<Interaction>().Blob)
+            {
+                //_INSERT BLOB PARTICLE EFFECTS HERE_//
+            }
+
         }
         else
         {
