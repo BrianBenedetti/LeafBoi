@@ -8,6 +8,15 @@ public class PlayerController : MonoBehaviour
     public static PlayerController instance;
     private InputMaster _controls;
 
+    AudioSource source;
+    public AudioClip jump;
+    public AudioClip Djump;
+    public AudioClip BoingInteract;
+    public Transform ParticleEffectTransform;
+
+    public GameObject DJumpParticleEffect;
+    public GameObject BlobParticleEffect;
+
     public float smoothing;
     public float walkSmoothing;
     public float speed;
@@ -82,6 +91,7 @@ public class PlayerController : MonoBehaviour
             Destroy(this.gameObject);
         }
 
+        source = GetComponent<AudioSource>();
         _dashTime = _dashLimit;
 
         _rb = GetComponent<Rigidbody>();
@@ -334,7 +344,7 @@ public class PlayerController : MonoBehaviour
                 button.interactionHandler();
                 _anim.SetTrigger("Interaction");
 
-                //_INSERT INTERACTION NOISES HERE(Restricted to interactions with buttons)_
+                source.PlayOneShot(BoingInteract);
             }
 
             if (interactable.GetComponent<Interaction>().Instrument)
@@ -344,7 +354,7 @@ public class PlayerController : MonoBehaviour
 
             if (interactable.GetComponent<Interaction>().Blob)
             {
-                //_INSERT BLOB PARTICLE EFFECTS HERE_//
+                Instantiate(BlobParticleEffect,ParticleEffectTransform);
             }
 
         }
@@ -407,8 +417,8 @@ public class PlayerController : MonoBehaviour
                 _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
                 _secondJump = false;
 
-                //_INSERT DOUBLE JUMP SOUNDS HERE_
-                //_INSERT DOUBLE JUMP PARTICLES HERE_
+                source.PlayOneShot(Djump);
+                Instantiate(DJumpParticleEffect, ParticleEffectTransform);
             }
 
             if (_grounded && !_interacting && !inDialogue)
@@ -417,7 +427,7 @@ public class PlayerController : MonoBehaviour
                 _jumpPrep = true;
                 StartCoroutine(setGrounded());
 
-                // _INSERT JUMP SOUNDS HERE_
+                source.PlayOneShot(jump);
             }
 
             if (_interacting)

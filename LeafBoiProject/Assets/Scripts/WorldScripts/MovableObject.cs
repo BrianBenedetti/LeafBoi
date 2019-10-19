@@ -6,6 +6,9 @@ public class MovableObject : MonoBehaviour
 {
     private bool _open = false;
 
+    AudioSource source;
+    public AudioClip StoneGrinding;
+
     [SerializeField]
     protected float _smoothing;
 
@@ -21,6 +24,10 @@ public class MovableObject : MonoBehaviour
         _initPos = transform.position;
     }
 
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
     public void interactionHandler()
     {
         if (_open)
@@ -34,7 +41,7 @@ public class MovableObject : MonoBehaviour
 
         if (name == "Wall Thing")
         {
-            //_INSERT STONE GRINDING NOISE HERE_
+            source.PlayOneShot(StoneGrinding);
         }
     }
 

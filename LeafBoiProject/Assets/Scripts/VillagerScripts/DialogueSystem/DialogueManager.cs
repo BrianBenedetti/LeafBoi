@@ -10,6 +10,10 @@ public class DialogueManager : MonoBehaviour{
     public TextMeshProUGUI dialogueText;
     public bool convActive;
 
+    AudioSource source;
+    AudioClip ElderVoice;
+    AudioClip VillagerVoice;
+
     public Animator animator;
 
     private string _sentence;
@@ -60,10 +64,10 @@ public class DialogueManager : MonoBehaviour{
 
             if (currDialogue.name.Contains("Elder"))
             {
-                //INSERT ELDER SPEAKING NOISES
+                source.PlayOneShot(ElderVoice);
             }
             else {
-                //INSERT VILLAGER SPEAKING NOISES HERE
+                source.PlayOneShot(VillagerVoice);
             }
 
             if (_sentences.Count == 0)

@@ -8,6 +8,9 @@ public class GroundCheck : MonoBehaviour
     public float dToGround;
     public PlayerController player;
 
+    AudioSource source;
+    public AudioClip land;
+
     public ParticleSystem ps;
     public float maxDist;
 
@@ -24,6 +27,11 @@ public class GroundCheck : MonoBehaviour
     public LayerMask layerMask;
     private bool landed = false;
 
+
+    void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -125,7 +133,7 @@ public class GroundCheck : MonoBehaviour
 
         if (groundRay && !landed)
         {
-            //_INSERT LANDING NOISES HERE_
+            source.PlayOneShot(land);
             landed = true;
             print("Landed");
         }
