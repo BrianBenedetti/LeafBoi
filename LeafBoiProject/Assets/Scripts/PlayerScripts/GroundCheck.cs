@@ -49,7 +49,7 @@ public class GroundCheck : MonoBehaviour
 
         Debug.DrawRay(rFront.origin, player._moveDir * maxDist, Color.red);
 
-        if (Physics.Raycast(rFront, out rFrontHit, maxDist))
+        if (Physics.Raycast(rFront, out rFrontHit, maxDist, layerMask))
         {
             Debug.DrawRay(rFront.origin, rFrontHit.point - rFront.origin, Color.red);
             float angle = Vector3.Angle(transform.forward, rFrontHit.normal);
@@ -69,7 +69,7 @@ public class GroundCheck : MonoBehaviour
             frontStop = false;
         }
 
-        if (Physics.Raycast(rBack, out rBackHit, maxDist))
+        if (Physics.Raycast(rBack, out rBackHit, maxDist, layerMask))
         {
             Debug.DrawRay(rBack.origin, rBackHit.point - rBack.origin, Color.red);
             float angle = Vector3.Angle(transform.forward, rBackHit.normal);
@@ -89,7 +89,7 @@ public class GroundCheck : MonoBehaviour
             backStop = false;
         }
 
-        if (Physics.Raycast(rRight, out rRightHit, maxDist))
+        if (Physics.Raycast(rRight, out rRightHit, maxDist, layerMask))
         {
             Debug.DrawRay(rRight.origin, rRightHit.point - rRight.origin, Color.red);
             float angle = Vector3.Angle(transform.right, rRightHit.normal);
@@ -109,7 +109,7 @@ public class GroundCheck : MonoBehaviour
             rightStop = false;
         }
 
-        if (Physics.Raycast(rLeft, out rLeftHit, maxDist))
+        if (Physics.Raycast(rLeft, out rLeftHit, maxDist, layerMask))
         {
             Debug.DrawRay(rLeft.origin, rLeftHit.point - rLeft.origin, Color.red);
             float angle = Vector3.Angle(transform.right, rLeftHit.normal);
@@ -150,7 +150,7 @@ public class GroundCheck : MonoBehaviour
 
 
         //_AN EXAMPLE OF HOW TO CHANGE WHEN A CERTAIN PARTICLE EFFECT PLAYS_
-         var em = ps.emission;
+        var em = ps.emission;
         em.enabled = groundRay;
     }
 }
