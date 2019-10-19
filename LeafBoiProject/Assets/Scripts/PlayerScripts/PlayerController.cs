@@ -333,11 +333,18 @@ public class PlayerController : MonoBehaviour
                 ButtonManager button = interactable.GetComponent<ButtonManager>();
                 button.interactionHandler();
                 _anim.SetTrigger("Interaction");
+
+                //_INSERT INTERACTION NOISES HERE(Restricted to interactions with buttons)_
             }
 
             if (interactable.GetComponent<Interaction>().Instrument)
             {
 
+            }
+
+            if (interactable.GetComponent<Interaction>().Blob)
+            {
+                //_INSERT BLOB PARTICLE EFFECTS HERE_//
             }
 
         }
@@ -399,6 +406,9 @@ public class PlayerController : MonoBehaviour
                 _anim.SetBool("DoubleJump", true);
                 _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
                 _secondJump = false;
+
+                //_INSERT DOUBLE JUMP SOUNDS HERE_
+                //_INSERT DOUBLE JUMP PARTICLES HERE_
             }
 
             if (_grounded && !_interacting && !inDialogue)
@@ -406,6 +416,8 @@ public class PlayerController : MonoBehaviour
                 _anim.SetBool("Jumping", true);
                 _jumpPrep = true;
                 StartCoroutine(setGrounded());
+
+                // _INSERT JUMP SOUNDS HERE_
             }
 
             if (_interacting)

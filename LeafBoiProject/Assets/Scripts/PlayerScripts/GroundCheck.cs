@@ -22,6 +22,7 @@ public class GroundCheck : MonoBehaviour
     public bool rightStop;
     public bool leftStop;
     public LayerMask layerMask;
+    private bool landed = false;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -122,8 +123,16 @@ public class GroundCheck : MonoBehaviour
 
 
 
-
-
+        if (groundRay && !landed)
+        {
+            //_INSERT LANDING NOISES HERE_
+            landed = true;
+            print("Landed");
+        }
+        else if(!groundRay)
+        {
+            landed = false;
+        }
 
 
         if (groundRay)
@@ -131,8 +140,9 @@ public class GroundCheck : MonoBehaviour
             player.Grounded();
         }
 
-        var em = ps.emission;
 
+        //_AN EXAMPLE OF HOW TO CHANGE WHEN A CERTAIN PARTICLE EFFECT PLAYS_
+         var em = ps.emission;
         em.enabled = groundRay;
     }
 }

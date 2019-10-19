@@ -16,6 +16,7 @@ public class DialogueManager : MonoBehaviour{
     private Queue<string> _sentences;
     private bool _typing;
     private InputMaster _controls;
+    private Dialogue currDialogue;
     
 
     [SerializeField] protected GameObject player;
@@ -35,6 +36,7 @@ public class DialogueManager : MonoBehaviour{
     }
 
     public void StartDialogue(Dialogue dialogue){
+        currDialogue = dialogue;
 
         animator.SetBool("IsOpen", true);
 
@@ -54,6 +56,16 @@ public class DialogueManager : MonoBehaviour{
 
         if (!_typing)
         {
+            
+
+            if (currDialogue.name.Contains("Elder"))
+            {
+                //INSERT ELDER SPEAKING NOISES
+            }
+            else {
+                //INSERT VILLAGER SPEAKING NOISES HERE
+            }
+
             if (_sentences.Count == 0)
             {
 

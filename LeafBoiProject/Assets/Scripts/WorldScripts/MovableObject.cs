@@ -31,6 +31,11 @@ public class MovableObject : MonoBehaviour
         {
             _open = true;
         }
+
+        if (name == "Wall Thing")
+        {
+            //_INSERT STONE GRINDING NOISE HERE_
+        }
     }
 
     private void FixedUpdate()
