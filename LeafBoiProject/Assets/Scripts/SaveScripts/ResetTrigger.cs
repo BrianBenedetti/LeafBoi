@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResetTrigger : MonoBehaviour
 {
     [SerializeField] protected PlayerController player;
+    [SerializeField] protected GameManager gm;
     [SerializeField] protected float delay;
 
     private void OnTriggerEnter(Collider other)
@@ -19,5 +20,6 @@ public class ResetTrigger : MonoBehaviour
     {
         yield return new WaitForSeconds(delay);
         player.LoadGame();
+        gm.LoadState();
     }
 }

@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _playerAxis;
     private Rigidbody _rb;
 
-    private bool _grounded = true;
+    private bool _grounded = false;
     [SerializeField]
     protected bool _secondJump = true;
     [SerializeField]
@@ -132,13 +132,13 @@ public class PlayerController : MonoBehaviour
         {
             //Unfreezes player if not paused and only goes through these methods during unpaused state
             _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
-            AnimatorHandler();
 
             if (_anim.GetFloat("Speed") > 0.1f)
             {
                 PlayerFacing();
             }
             MovementHandler();
+            AnimatorHandler();
         }
         else {
             //Freezes player based on constraints during pause
@@ -151,15 +151,15 @@ public class PlayerController : MonoBehaviour
     //Changes animation states when needed, depending on the current state of the player.
     private void AnimatorHandler()
     {
-        //Setting Velocity to different values
-        if (_rb.velocity.y < -0.01f || (_rb.velocity.y < -0.01f && !_jumping))
+        if (_magYSpeed > 0 || _grounded)
         {
-            _anim.SetBool("Falling", true);
+            _anim.SetBool("Falling", false);
         }
 
-        if (_rb.velocity.y > 0 || _grounded)
-        { 
-            _anim.SetBool("Falling", false);
+        //Setting Velocity to different values
+        if (_magYSpeed < -0.01f || (_magYSpeed < -0.01f && !_jumping))
+        {
+            _anim.SetBool("Falling", true);
         }
 
         if (_anim.GetBool("Tired") && state != 3)
@@ -264,7 +264,7 @@ public class PlayerController : MonoBehaviour
             _rb.velocity += Vector3.up * Physics.gravity.y * 2.5f * (2.5f - 1) * Time.deltaTime;
         }
 
-        if (state.Equals(0) || state.Equals(2))
+        if (_gm.GameState < 1)
         {
             _secondJump = false;
         }
@@ -408,7 +408,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!pause)
         {
-            if (!_grounded && _secondJump && !_interacting && _gm.GameState > 0 && !inDialogue)
+            if (!_grounded && _secondJump && !_interacting && (_gm.GameState > 0) && !inDialogue)
             {
                 _anim.SetBool("DoubleJump", true);
                 _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));
