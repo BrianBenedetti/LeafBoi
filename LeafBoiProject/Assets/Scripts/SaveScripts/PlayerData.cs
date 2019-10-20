@@ -7,8 +7,9 @@ public class PlayerData
 {
     public float[] position;
     public float[] rotation;
+    public int state;
 
-    public PlayerData(PlayerController player)
+    public PlayerData(PlayerController player, GameManager gm)
     {
         position = new float[3];
         rotation = new float[3];
@@ -20,5 +21,7 @@ public class PlayerData
         rotation[0] = player.transform.rotation.eulerAngles.x;
         rotation[1] = player.transform.rotation.eulerAngles.y;
         rotation[2] = player.transform.rotation.eulerAngles.z;
+
+        state = gm.GameState;
     }
 }

@@ -23,7 +23,7 @@ public class MainMenuScript : MonoBehaviour{
     }
 
     public void Continue(){
-
+        //Don't Delete Script at this point Run a Coroutine that loads the old state of the system then delete this script
     }
 
     public void NewGame(){

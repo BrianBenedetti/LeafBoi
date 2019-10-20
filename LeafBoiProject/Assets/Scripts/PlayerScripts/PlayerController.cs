@@ -66,7 +66,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] protected float _speedCharge;
     [SerializeField] protected float _idleLimit;
     [SerializeField] protected GroundCheck _check;
-    [SerializeField] protected float glideFactor;
+    [SerializeField] protected float _glideFactor;
+    [SerializeField] protected GameManager _gm;
 
     private bool _jumpPrep;
     private float idleTimer;
@@ -253,7 +254,7 @@ public class PlayerController : MonoBehaviour
         {
             if (_rb.velocity.y < -1f)
             {
-                _rb.velocity += Vector3.down * glideFactor * Physics.gravity.y * Time.deltaTime;
+                _rb.velocity += Vector3.down * _glideFactor * Physics.gravity.y * Time.deltaTime;
             }
         }
 
@@ -301,7 +302,7 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a glide are pressed.
     private void HandleGlide()
     {
-        if (!_grounded && state.Equals(1))
+        if (!_grounded && _gm.GameState > 1)
         {
             gliding = true;
         }
@@ -407,7 +408,7 @@ public class PlayerController : MonoBehaviour
     {
         if (!pause)
         {
-            if (!_grounded && _secondJump && !_interacting && state.Equals(1) && !inDialogue)
+            if (!_grounded && _secondJump && !_interacting && _gm.GameState > 0 && !inDialogue)
             {
                 _anim.SetBool("DoubleJump", true);
                 _rb.velocity = new Vector2(0, Mathf.Sqrt(-2.0f * Physics2D.gravity.y * 2f * _jumpHeight));

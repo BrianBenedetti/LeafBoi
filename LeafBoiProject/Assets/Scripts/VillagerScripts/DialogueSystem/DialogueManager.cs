@@ -21,8 +21,8 @@ public class DialogueManager : MonoBehaviour{
     private bool _typing;
     private InputMaster _controls;
     private Dialogue currDialogue;
-    
 
+    [SerializeField] protected GameManager gm;
     [SerializeField] protected GameObject player;
     [SerializeField] protected GameObject[] villagers;
 
@@ -62,7 +62,7 @@ public class DialogueManager : MonoBehaviour{
         {
             
 
-            if (currDialogue.name.Contains("Elder"))
+            /*if (currDialogue.name.Contains("Elder"))
             {
                 source.PlayOneShot(ElderVoice);
             }
@@ -70,7 +70,7 @@ public class DialogueManager : MonoBehaviour{
             if(currDialogue.name.Contains("Villager"))
             {
                 source.PlayOneShot(VillagerVoice);
-            }
+            }*/
 
             if (_sentences.Count == 0)
             {
@@ -103,6 +103,11 @@ public class DialogueManager : MonoBehaviour{
     }
 
     void EndDialogue(){
+
+        if (currDialogue.name == "Elder")
+        {
+            gm.UpdateState(1);
+        }
 
         animator.SetBool("IsOpen", false);
         player.GetComponent<PlayerController>().endDialogue();
