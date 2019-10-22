@@ -164,7 +164,9 @@ MonoBehaviour:
     sentences:
     - "Don\u2019t you need to speak to the Elder?"
   player: {fileID: 0}
+  inDialogue: 0
   col: {fileID: 5893127437631087107}
+  anim: {fileID: 8546294890845054522}
 --- !u!114 &5893127437631087112
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -181,6 +183,7 @@ MonoBehaviour:
   NPC: 1
   Button: 0
   Instrument: 0
+  Blob: 0
   interactable: 1
 --- !u!136 &5893127437631087111
 CapsuleCollider:

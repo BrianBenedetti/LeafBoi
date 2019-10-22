@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Water
+  m_Name: Water 2
   m_Shader: {fileID: -6465566751694194690, guid: 489a25161e28f6547a97f90a927b137c,
     type: 3}
   m_ShaderKeywords: 
@@ -108,10 +108,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Floats:
     - Vector1_2DEFD997: 0.1
-    - Vector1_4B8A55AE: 10
+    - Vector1_4B8A55AE: 27
     - Vector1_70146DCF: 1
-    - Vector1_BEC70674: 2
-    - Vector1_CA43EB88: 6.5
+    - Vector1_BEC70674: 5
+    - Vector1_CA43EB88: 87.63
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1

@@ -11,8 +11,8 @@ public class DialogueManager : MonoBehaviour{
     public bool convActive;
 
     AudioSource source;
-    AudioClip ElderVoice;
-    AudioClip VillagerVoice;
+    public AudioClip ElderVoice;
+    public AudioClip VillagerVoice;
 
     public Animator animator;
 
@@ -25,6 +25,11 @@ public class DialogueManager : MonoBehaviour{
     [SerializeField] protected GameManager gm;
     [SerializeField] protected GameObject player;
     [SerializeField] protected GameObject[] villagers;
+
+    private void Awake()
+    {
+        source = GetComponent<AudioSource>();
+    }
 
     // Start is called before the first frame update
     void Start(){
@@ -60,17 +65,17 @@ public class DialogueManager : MonoBehaviour{
 
         if (!_typing)
         {
-            
 
-            /*if (currDialogue.name.Contains("Elder"))
+
+            if (currDialogue.name.Contains("Elder"))
             {
                 source.PlayOneShot(ElderVoice);
             }
             else
-            if(currDialogue.name.Contains("Villager"))
+            if (currDialogue.name.Contains("Villager"))
             {
                 source.PlayOneShot(VillagerVoice);
-            }*/
+            }
 
             if (_sentences.Count == 0)
             {
