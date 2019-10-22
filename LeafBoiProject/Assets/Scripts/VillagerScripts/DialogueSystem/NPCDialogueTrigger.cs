@@ -38,6 +38,11 @@ public class NPCDialogueTrigger : MonoBehaviour{
         col.enabled = !inDialogue;
     }
 
+    public void setDialogue(Dialogue newDialogue)
+    {
+        dialogue = newDialogue;
+    }
+
     public void ResetRotation() {
         inDialogue = false;
     }
@@ -48,7 +53,7 @@ public class NPCDialogueTrigger : MonoBehaviour{
     }
 
     public void LookAtPlayer() {
-        if (name != "Elder")
+        if (name != "Elder" && !name.Contains("Signpost"))
         {
             Vector3 lookDir = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
             Quaternion lookRotation = Quaternion.LookRotation(lookDir);

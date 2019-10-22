@@ -10,6 +10,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] protected Collider scarfCol;
     [SerializeField] protected GameObject scarf;
+    [SerializeField] protected Interaction treeInteraction;
+    [SerializeField] protected NPCDialogueTrigger elder;
+    [SerializeField] protected Dialogue newElderDialogue;
 
     void Awake()
     {
@@ -57,10 +60,19 @@ public class GameManager : MonoBehaviour
             //Increase Severity of the Blight Shader Affecting the Level
         }
 
-        if (GameState > 2)
+        if(GameState > 2)
         {
+            elder.setDialogue(newElderDialogue);
             //Activate Interaction Script for the Tree, Change Dialogue for the Elder
             //Increase Severity of the Blight Shader Affecting the Level
+        }
+
+        if (GameState < 2)
+        {
+            treeInteraction.enabled = false;
+        }
+        else {
+            treeInteraction.enabled = true;
         }
     }
 

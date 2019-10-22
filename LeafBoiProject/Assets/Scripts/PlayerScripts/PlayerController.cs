@@ -353,6 +353,10 @@ public class PlayerController : MonoBehaviour
 
             if (interactable.GetComponent<Interaction>().Blob)
             {
+                _anim.SetTrigger("Interaction");
+                source.PlayOneShot(BoingInteract);
+
+                _gm.UpdateState(interactable.GetComponent<Interaction>().update)    ;
             }
 
         }
