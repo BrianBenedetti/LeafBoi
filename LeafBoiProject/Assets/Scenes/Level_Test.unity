@@ -6451,6 +6451,37 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 6265730709291767446}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &571395071 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 818780754577837069, guid: f494816806138e24c91faab5c51890b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566932009}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &571395072
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 571395071}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107bf4bd78991ee4588955950258cfb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogue:
+    name: 
+    sentences: []
+  player: {fileID: 2138436187}
+  inDialogue: 0
+  col: {fileID: 571395075}
+  anim: {fileID: 1529560126}
+--- !u!135 &571395075 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 6584730255008064982, guid: f494816806138e24c91faab5c51890b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566932009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &573736542
 GameObject:
   m_ObjectHideFlags: 0
@@ -6634,6 +6665,8 @@ GameObject:
   - component: {fileID: 582090325}
   - component: {fileID: 582090324}
   - component: {fileID: 582090323}
+  - component: {fileID: 582090328}
+  - component: {fileID: 582090327}
   m_Layer: 0
   m_Name: EndPuzzleObject (1)
   m_TagString: Untagged
@@ -6649,10 +6682,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 582090322}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &582090324
 MeshRenderer:
@@ -6714,6 +6747,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 26
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &582090327
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582090322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02993d7ed9baa6948ae50126f361cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractButton: {fileID: 0}
+  NPC: 0
+  Button: 0
+  Instrument: 0
+  Blob: 1
+  interactable: 0
+--- !u!135 &582090328
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 582090322}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &588916471
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8352,6 +8416,8 @@ MonoBehaviour:
   nameText: {fileID: 1015268558}
   dialogueText: {fileID: 1567262764}
   convActive: 0
+  ElderVoice: {fileID: 0}
+  VillagerVoice: {fileID: 0}
   animator: {fileID: 1678959468}
   gm: {fileID: 1508543068}
   player: {fileID: 2138436187}
@@ -9587,6 +9653,8 @@ GameObject:
   - component: {fileID: 955414383}
   - component: {fileID: 955414382}
   - component: {fileID: 955414381}
+  - component: {fileID: 955414386}
+  - component: {fileID: 955414385}
   m_Layer: 0
   m_Name: EndPuzzleObject
   m_TagString: Untagged
@@ -9602,10 +9670,10 @@ SphereCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 955414380}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!23 &955414382
 MeshRenderer:
@@ -9667,6 +9735,37 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 25
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &955414385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955414380}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02993d7ed9baa6948ae50126f361cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractButton: {fileID: 0}
+  NPC: 0
+  Button: 0
+  Instrument: 0
+  Blob: 1
+  interactable: 0
+--- !u!135 &955414386
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 955414380}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &956295389
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11581,7 +11680,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1140431930}
-  m_LocalRotation: {x: 0.058510628, y: 0.0074937516, z: -0.00043941778, w: 0.9982586}
+  m_LocalRotation: {x: 0.058510628, y: 0.007493717, z: -0.00043941574, w: 0.9982586}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -14852,7 +14951,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2ca63be5a296944a955ce635eee3e36, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GameState: 0
+  GameState: 2
   scarfCol: {fileID: 1436725869}
   scarf: {fileID: 1789010088}
 --- !u!4 &1508543069
@@ -14955,6 +15054,12 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1529560126 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2354348846534646244, guid: f494816806138e24c91faab5c51890b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1566932009}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1533019863
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15102,21 +15207,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 818780754577837070, guid: f494816806138e24c91faab5c51890b9,
-        type: 3}
-      propertyPath: m_LocalScale.x
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 818780754577837070, guid: f494816806138e24c91faab5c51890b9,
-        type: 3}
-      propertyPath: m_LocalScale.y
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 818780754577837070, guid: f494816806138e24c91faab5c51890b9,
-        type: 3}
-      propertyPath: m_LocalScale.z
-      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f494816806138e24c91faab5c51890b9, type: 3}

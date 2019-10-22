@@ -9,7 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 818780754577837070}
+  - component: {fileID: 6584730255008064982}
   - component: {fileID: 263620987199489617}
+  - component: {fileID: 7443393272240071456}
   m_Layer: 0
   m_Name: p_SageTree 1
   m_TagString: Untagged
@@ -26,12 +28,25 @@ Transform:
   m_GameObject: {fileID: 818780754577837069}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 5631276400789484702}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6584730255008064982
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818780754577837069}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 15
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!65 &263620987199489617
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45,6 +60,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20.168913, y: 19.560358, z: 18.147396}
   m_Center: {x: -0.015198708, y: 9.280179, z: -1.2763844}
+--- !u!114 &7443393272240071456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818780754577837069}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02993d7ed9baa6948ae50126f361cb10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  InteractButton: {fileID: 0}
+  NPC: 1
+  Button: 0
+  Instrument: 0
+  Blob: 0
+  interactable: 0
 --- !u!1001 &818780756238229380
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57,11 +90,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: SageTree
       objectReference: {fileID: 0}
-    - target: {fileID: -6057140222963153312, guid: bace3f95a78048d439ba29f061bc7283,
-        type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 09d2d1eae8a44a3488cac9649ff93f96, type: 2}
     - target: {fileID: -4216859302048453862, guid: bace3f95a78048d439ba29f061bc7283,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,6 +145,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6057140222963153312, guid: bace3f95a78048d439ba29f061bc7283,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 09d2d1eae8a44a3488cac9649ff93f96, type: 2}
     - target: {fileID: -2139492254116998641, guid: bace3f95a78048d439ba29f061bc7283,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
