@@ -278,14 +278,14 @@ public class PlayerController : MonoBehaviour
     //Handles what happens when any of the buttons that entail a dash are pressed. Sets the pause bool to true
     private void HandlePause()
     {
-        if (pause)
-        {
-            pause = false;
-        }
-        else
-        {
-            pause = true;
-        }
+        //if (pause)
+        //{
+        //    pause = false;
+        //}
+        //else
+        //{
+        //    pause = true;
+        //}
     }
 
     //Handles what happens when any of the buttons that entail a dash are pressed.
