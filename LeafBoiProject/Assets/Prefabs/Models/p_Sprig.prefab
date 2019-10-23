@@ -169,7 +169,7 @@ MonoBehaviour:
   maxAngle: 95
   dotResist: 0.5
   cAngle: 45
-  yAxis: 1.5
+  yAxis: 1.55
   frontStop: 0
   backStop: 0
   rightStop: 0
