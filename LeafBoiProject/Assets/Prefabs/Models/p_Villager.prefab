@@ -25,13 +25,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012293417}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: 0, y: 7.779989, z: 0}
   m_LocalScale: {x: 0.4000003, y: 0.39999998, z: 1}
   m_Children: []
   m_Father: {fileID: 5893127437631087106}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!64 &2012293420
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -84,10 +84,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4076411626441518476, guid: 600dafa14c9eb2b449f8934927915e81,
+  m_Sprite: {fileID: 8885839255511970297, guid: 5fff1b2352551b9408a19d7fe537287a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4.69, y: 4.45}
@@ -184,6 +184,7 @@ MonoBehaviour:
   Button: 0
   Instrument: 0
   Blob: 0
+  update: 0
   interactable: 1
 --- !u!136 &5893127437631087111
 CapsuleCollider:
