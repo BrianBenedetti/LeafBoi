@@ -24,7 +24,12 @@ public class NPCDialogueTrigger : MonoBehaviour{
     private void Update()
     {
         if (name.Contains("moving"))
-        anim.SetBool("inDialogue", inDialogue);
+        {
+            anim.SetBool("inDialogue", inDialogue);
+        }
+        else if(name.Contains("Villager")){
+            anim.SetBool("inDialogue", true);
+        }
 
         if (inDialogue)
         {
@@ -53,7 +58,7 @@ public class NPCDialogueTrigger : MonoBehaviour{
     }
 
     public void LookAtPlayer() {
-        if (name != "Elder" && !name.Contains("Signpost"))
+        if (name != "Elder" && !name.Contains("Signpost") && !name.Contains("SageTree"))
         {
             Vector3 lookDir = new Vector3(player.transform.position.x - transform.position.x, 0, player.transform.position.z - transform.position.z);
             Quaternion lookRotation = Quaternion.LookRotation(lookDir);

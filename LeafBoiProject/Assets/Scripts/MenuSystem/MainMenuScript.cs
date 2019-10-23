@@ -7,6 +7,7 @@ public class MainMenuScript : MonoBehaviour{
 
     public GameObject mainMenu;
     public GameObject pressText;
+    public Animator optionsAnim;
 
     private void Update()
     {
@@ -20,6 +21,11 @@ public class MainMenuScript : MonoBehaviour{
         {
             Quit();
         }
+    }
+
+    public void Options()
+    {
+        optionsAnim.SetBool("SecondaryOpen", true);
     }
 
     public void Continue(){

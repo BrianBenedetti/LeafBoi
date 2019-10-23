@@ -67,7 +67,7 @@ public class GameManager : MonoBehaviour
             //Increase Severity of the Blight Shader Affecting the Level
         }
 
-        if (GameState < 2)
+        if (GameState <= 2)
         {
             treeInteraction.enabled = false;
         }
