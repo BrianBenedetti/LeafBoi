@@ -84,10 +84,10 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4076411626441518476, guid: 600dafa14c9eb2b449f8934927915e81,
+  m_Sprite: {fileID: 8885839255511970297, guid: 5fff1b2352551b9408a19d7fe537287a,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 4.69, y: 4.45}
@@ -106,9 +106,9 @@ GameObject:
   m_Component:
   - component: {fileID: 818780754577837070}
   - component: {fileID: 6584730255008064982}
-  - component: {fileID: 263620987199489617}
   - component: {fileID: 7443393272240071456}
   - component: {fileID: 571395072}
+  - component: {fileID: 8979538609266382221}
   m_Layer: 0
   m_Name: p_SageTree 1
   m_TagString: Untagged
@@ -145,19 +145,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 15
   m_Center: {x: 0, y: 0, z: 0}
---- !u!65 &263620987199489617
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 818780754577837069}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 20.168913, y: 19.560358, z: 18.147396}
-  m_Center: {x: -0.015198708, y: 9.280179, z: -1.2763844}
 --- !u!114 &7443393272240071456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -190,12 +177,35 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue:
-    name: 
-    sentences: []
+    name: Sage Tree
+    sentences:
+    - "Child\u2026"
+    - Can you understand this ancient tongue?
+    - "Your people have forsaken Nature\u2026"
+    - "The liquid your people refer to as the Amethyst Sap is called the Blight. It
+      feeds on Nature and destroys it\u2026"
+    - "The environment has become treacherous and unforgiving because of this\u2026
+      But not all hope is lost."
+    - You must stop them young hero, or there might not be a place for any of us to
+      call home.
   player: {fileID: 0}
   inDialogue: 0
   col: {fileID: 6584730255008064982}
   anim: {fileID: 2354348846534646244}
+--- !u!136 &8979538609266382221
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 818780754577837069}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 8.392946
+  m_Height: 23.668318
+  m_Direction: 1
+  m_Center: {x: 0, y: 8.623137, z: 0}
 --- !u!1001 &818780756238229380
 PrefabInstance:
   m_ObjectHideFlags: 0
