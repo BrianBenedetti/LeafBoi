@@ -10,6 +10,7 @@ public class Interaction : MonoBehaviour
     public bool Button;
     public bool Instrument;
     public bool Blob;
+    public int update;
 
     [SerializeField]
     protected bool interactable;
