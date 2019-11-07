@@ -169,8 +169,8 @@ MonoBehaviour:
       village.'
     - "O-of course, it\u2019s safe to go out! You think I would send you out there
       if it weren\u2019t?"
-    - "Here, this should help you out. Now go on, and be fast, I don\u2019t have all
-      day."
+    - "Here, this double jump ability should help you out. Now go on, and be fast,
+      I don\u2019t have all day."
     - '...'
     - What are you still doing here? Go on. The exit is close to your house.
   player: {fileID: 0}
