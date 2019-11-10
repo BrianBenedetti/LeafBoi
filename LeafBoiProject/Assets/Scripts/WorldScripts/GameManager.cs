@@ -1,12 +1,15 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     private float _deltaTime = 0.0f;
     public int GameState = 0;
+
+    public EventSystem eventSystem;
 
     [SerializeField] protected Collider scarfCol;
     [SerializeField] protected GameObject scarf;
@@ -17,8 +20,13 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 60;
+        Application.targetFrameRate = 60;   
+    }
+
+    private void Start()
+    {
         GameState = 0;
+        treeInteraction.NPC = false;
     }
 
     public void LoadState()
@@ -60,19 +68,15 @@ public class GameManager : MonoBehaviour
             //Increase Severity of the Blight Shader Affecting the Level
         }
 
-        if(GameState > 2)
+        if (GameState > 2)
         {
             elder.setDialogue(newElderDialogue);
             //Activate Interaction Script for the Tree, Change Dialogue for the Elder
             //Increase Severity of the Blight Shader Affecting the Level
-        }
-
-        if (GameState <= 2)
-        {
-            treeInteraction.enabled = false;
+            treeInteraction.NPC = true;
         }
         else {
-            treeInteraction.enabled = true;
+            treeInteraction.InteractButton.SetActive(false);    
         }
     }
 
