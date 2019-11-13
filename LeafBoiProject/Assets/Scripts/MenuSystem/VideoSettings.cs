@@ -17,10 +17,17 @@ public class VideoSettings : MonoBehaviour
 
         int currentResolutionIndex = 0;
 
+        //options.Add("1920x1080");
+        //options.Add("1280x720");
+        //options.Add("1024x576");
+
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string option = resolutions[i].width + "x" + resolutions[i].height;
-            options.Add(option);
+            if (resolutions[i].width == 1920 || resolutions[i].width == 1280 || resolutions[i].width == 1024)
+            {
+                string option = resolutions[i].width + "x" + resolutions[i].height;
+                options.Add(option);
+            }
 
             if (resolutions[i].height == Screen.currentResolution.height && resolutions[i].width == resolutions[i].width)
             {
