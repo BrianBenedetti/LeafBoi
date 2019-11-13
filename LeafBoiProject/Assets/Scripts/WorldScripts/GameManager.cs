@@ -9,8 +9,6 @@ public class GameManager : MonoBehaviour
     private float _deltaTime = 0.0f;
     public int GameState = 0;
 
-    public EventSystem eventSystem;
-
     [SerializeField] protected Collider scarfCol;
     [SerializeField] protected GameObject scarf;
     [SerializeField] protected Interaction treeInteraction;
@@ -20,7 +18,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         QualitySettings.vSyncCount = 1;
-        Application.targetFrameRate = 60;   
+        Application.targetFrameRate = 60;
     }
 
     private void Start()
