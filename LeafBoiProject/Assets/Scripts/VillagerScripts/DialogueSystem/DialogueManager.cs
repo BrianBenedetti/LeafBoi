@@ -114,6 +114,11 @@ public class DialogueManager : MonoBehaviour{
             gm.UpdateState(1);
         }
 
+        if (gm.GameState > 2 && currDialogue.name == "Elder")
+        {
+            gm.endGame();
+        }
+
         animator.SetBool("IsOpen", false);
         player.GetComponent<PlayerController>().endDialogue();
         for (int i = 0; i < villagers.Length; i++)
@@ -121,5 +126,7 @@ public class DialogueManager : MonoBehaviour{
             villagers[i].GetComponent<NPCDialogueTrigger>().ResetRotation();
         }
         player.GetComponent<PlayerController>().inDialogue = false;
+
+        
     }
 }

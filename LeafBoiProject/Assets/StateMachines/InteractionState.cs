@@ -18,7 +18,6 @@ public class InteractionState : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         PlayerController player = animator.gameObject.GetComponent<PlayerController>();
-        Debug.Log(player.name);
         player.inDialogue = true;
     }
 

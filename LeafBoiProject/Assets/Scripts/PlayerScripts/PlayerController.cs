@@ -355,8 +355,9 @@ public class PlayerController : MonoBehaviour
             {
                 _anim.SetTrigger("Interaction");
                 source.PlayOneShot(BoingInteract);
-
-                _gm.UpdateState(interactable.GetComponent<Interaction>().update)    ;
+                _gm.UpdateState(interactable.GetComponent<Interaction>().update);
+                BlightBlobManager blob = interactable.GetComponent<BlightBlobManager>();
+                blob.pickUp();
             }
 
         }
@@ -452,11 +453,14 @@ public class PlayerController : MonoBehaviour
 
     private void PlayerFacing(GameObject lookAt)
     {
-        if (lookAt.gameObject.name != "Elder")
+        if (lookAt != null)
         {
-            Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, 0, lookAt.transform.position.z - transform.position.z);
-            Quaternion lookRotation = Quaternion.LookRotation(lookDir);
-            transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
+            if (lookAt.gameObject.name != "Elder")
+            {
+                Vector3 lookDir = new Vector3(lookAt.transform.position.x - transform.position.x, 0, lookAt.transform.position.z - transform.position.z);
+                Quaternion lookRotation = Quaternion.LookRotation(lookDir);
+                transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation * Quaternion.Euler(0, OFFSET, 0), Time.deltaTime * smoothing);
+            }
         }
     }
 

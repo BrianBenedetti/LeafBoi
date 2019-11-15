@@ -78,6 +78,13 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void endGame()
+    {
+        //PUT IN STUFF TO IMPLEMENT CREDITS AND FADE TO BLACK
+
+        Debug.Log("Game has ended");
+    }
+
     void OnGUI()
     {
         int w = Screen.width, h = Screen.height;
