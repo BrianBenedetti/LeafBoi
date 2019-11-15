@@ -5,35 +5,31 @@ using UnityEngine.UI;
 
 public class VideoSettings : MonoBehaviour
 {
-    Resolution[] resolutions;
+    public Resolution[] resolutions;
     public Dropdown resolutionDropdowns;
 
     private void Awake()
     {
-        resolutions = Screen.resolutions;
+        resolutions = new Resolution[3];
+        resolutions[0].width = 1920;
+        resolutions[0].height = 1080;
+        resolutions[0].refreshRate = 60;
+        resolutions[1].width = 1280;
+        resolutions[1].height = 720;
+        resolutions[1].refreshRate = 60;
+        resolutions[2].width = 1024;
+        resolutions[2].height = 576;
+        resolutions[2].refreshRate = 60;
+
         resolutionDropdowns.ClearOptions();
 
         List<string> options = new List<string>();
 
         int currentResolutionIndex = 0;
 
-        //options.Add("1920x1080");
-        //options.Add("1280x720");
-        //options.Add("1024x576");
-
-        for (int i = 0; i < resolutions.Length; i++)
-        {
-            if (resolutions[i].width == 1920 || resolutions[i].width == 1280 || resolutions[i].width == 1024)
-            {
-                string option = resolutions[i].width + "x" + resolutions[i].height;
-                options.Add(option);
-            }
-
-            if (resolutions[i].height == Screen.currentResolution.height && resolutions[i].width == resolutions[i].width)
-            {
-                currentResolutionIndex = i;
-            }
-        }
+        options.Add("1920x1080");
+        options.Add("1280x720");
+        options.Add("1024x576");
 
         resolutionDropdowns.AddOptions(options);
         resolutionDropdowns.value = currentResolutionIndex;
@@ -48,6 +44,7 @@ public class VideoSettings : MonoBehaviour
     public void SetResolution(int resolutionIndex)
     {
         Resolution resolution = resolutions[resolutionIndex];
+        print(resolution);
         Screen.SetResolution(resolution.width, resolution.height, Screen.fullScreen);
     }
 }
