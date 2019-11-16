@@ -5,11 +5,12 @@ using UnityEngine;
 public class BlightBlobManager : MonoBehaviour
 {
     public float delay;
+    public GameObject BlightParticleEffect;
+    Vector3 pos;
 
-    // Start is called before the first frame update
     void Start()
     {
-        
+        pos = this.gameObject.transform.position;
     }
 
     public void pickUp()
@@ -23,11 +24,5 @@ public class BlightBlobManager : MonoBehaviour
         yield return new WaitForSeconds(delay);
         
         Destroy(this.gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

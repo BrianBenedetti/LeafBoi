@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -15,16 +16,28 @@ public class GameManager : MonoBehaviour
     [SerializeField] protected NPCDialogueTrigger elder;
     [SerializeField] protected Dialogue newElderDialogue;
 
+
+    public Material HornBlightMaterial;
+    Material HornNormalMaterial;
+    MeshRenderer HornsRenderer;
+    public GameObject HornsPrefab;
+    public GameObject VillageBoundary;
+
+    public Image FadeImage;
+
     void Awake()
     {
         QualitySettings.vSyncCount = 1;
         Application.targetFrameRate = 60;
+        
     }
 
     private void Start()
     {
         GameState = 0;
         treeInteraction.NPC = false;
+        HornsRenderer = HornsPrefab.gameObject.GetComponent<MeshRenderer>();
+        HornNormalMaterial = HornsRenderer.material;
     }
 
     public void LoadState()
@@ -55,10 +68,14 @@ public class GameManager : MonoBehaviour
         {
             scarf.SetActive(true);
             scarfCol.enabled = true;
+            HornsRenderer.material = HornBlightMaterial;
+            VillageBoundary.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         else {
             scarf.SetActive(false);
             scarfCol.enabled = false;
+            HornsRenderer.material = HornNormalMaterial;
+            VillageBoundary.gameObject.GetComponent<BoxCollider>().enabled = true;
         }
 
         if(GameState > 1)
@@ -81,7 +98,7 @@ public class GameManager : MonoBehaviour
     public void endGame()
     {
         //PUT IN STUFF TO IMPLEMENT CREDITS AND FADE TO BLACK
-
+        StartCoroutine("FadeOut");
         Debug.Log("Game has ended");
     }
 
@@ -99,5 +116,21 @@ public class GameManager : MonoBehaviour
         float fps = 1.0f / _deltaTime;
         string text = string.Format("{0:0.0} ms ({1:0.} fps)", msec, fps);
         GUI.Label(rect, text, style);
+    }
+
+    IEnumerator FadeOut(){
+
+        AsyncOperation sceneLoad;
+        sceneLoad = SceneManager.LoadSceneAsync(2,LoadSceneMode.Single);
+        sceneLoad.allowSceneActivation = false;
+        for (int i = 0; i < 200; i++)
+        {
+            Color FullColor = FadeImage.color;
+            //fades to black in approx. 3 seconds
+            FullColor.a += 0.3f * Time.fixedDeltaTime;
+            FadeImage.color = FullColor;
+            yield return new WaitForFixedUpdate();
+        }
+        sceneLoad.allowSceneActivation = true;
     }
 }
