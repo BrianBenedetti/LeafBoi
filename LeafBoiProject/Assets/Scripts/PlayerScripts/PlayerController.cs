@@ -31,7 +31,7 @@ public class PlayerController : MonoBehaviour
     private Vector2 _playerAxis;
     private Rigidbody _rb;
 
-    private bool _grounded = false;
+    public bool _grounded = false;
     [SerializeField]
     protected bool _secondJump = true;
     [SerializeField]
@@ -49,6 +49,7 @@ public class PlayerController : MonoBehaviour
 
 
     private float _facingAngle;
+    private Vector3 _animSpeed;
     private float _playerRotation;
     private float _dashTime;
     private float _magSpeed;
@@ -73,6 +74,7 @@ public class PlayerController : MonoBehaviour
     private float idleTimer;
     private bool idle2;
     private bool stuck;
+    private float _animMagSpeed;
     private const float OFFSET = -90;
 
     public void endDialogue()
@@ -131,7 +133,7 @@ public class PlayerController : MonoBehaviour
         if (!inDialogue)
         {
             //Unfreezes player if not paused and only goes through these methods during unpaused state
-            _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ;
+            _rb.constraints = RigidbodyConstraints.FreezeRotationX | RigidbodyConstraints.FreezeRotationZ | RigidbodyConstraints.FreezeRotationY;
 
             if (_anim.GetFloat("Speed") > 0.1f)
             {
@@ -143,6 +145,7 @@ public class PlayerController : MonoBehaviour
         else {
             //Freezes player based on constraints during pause
             _rb.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ;
+            _animMagSpeed = 0;
             AnimatorHandler();
             PlayerFacing(interactable);
         }
@@ -177,7 +180,7 @@ public class PlayerController : MonoBehaviour
         }
         _magSpeed = Mathf.Abs(_magSpeed);
 
-        _anim.SetFloat("Speed", _magSpeed);
+        _anim.SetFloat("Speed", _animMagSpeed);
         _anim.SetFloat("YSpeed", _magYSpeed);
 
         if (_magSpeed == 0 && _magYSpeed == 0)
@@ -227,6 +230,16 @@ public class PlayerController : MonoBehaviour
             Vector3 inputZ = new Vector3(0f, 0f, _moveAxis.y);
 
             _moveDir = forward * _moveAxis.y + right * _moveAxis.x;
+
+            if (_moveDir.magnitude > 0)
+            {
+                _animSpeed = Vector3.Lerp(_animSpeed, new Vector3(_moveDir.x * speed, _rb.velocity.y, _moveDir.z * speed), _speedCharge);
+            }
+            else {
+                _animSpeed = Vector3.zero;
+            }
+
+            _animMagSpeed = _animSpeed.magnitude;
 
             if (!_check.frontStop && !_check.backStop && !_check.rightStop && !_check.leftStop && !stuck)
             {

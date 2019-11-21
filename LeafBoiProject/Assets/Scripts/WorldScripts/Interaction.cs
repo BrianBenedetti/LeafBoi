@@ -5,6 +5,7 @@ using UnityEngine;
 public class Interaction : MonoBehaviour
 {
     public GameObject InteractButton;
+    public GameManager gm;
 
     public bool NPC;
     public bool Button;
@@ -20,6 +21,7 @@ public class Interaction : MonoBehaviour
     private void Start()
     {
         _interactDisplay = false;
+        gm = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameManager>();
     }
 
     private void Update()
@@ -31,6 +33,11 @@ public class Interaction : MonoBehaviour
                 InteractButton.SetActive(_interactDisplay);
             }
             else {
+                InteractButton.SetActive(false);
+            }
+
+            if (gm.GameState < 3 && this.gameObject.name.Contains("SageTree"))
+            {
                 InteractButton.SetActive(false);
             }
         }

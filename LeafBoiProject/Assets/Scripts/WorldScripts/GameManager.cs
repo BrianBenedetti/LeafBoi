@@ -12,7 +12,9 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] protected Collider scarfCol;
     [SerializeField] protected GameObject scarf;
+    [SerializeField] protected GameObject scarfLoose;
     [SerializeField] protected Interaction treeInteraction;
+    [SerializeField] protected Collider treeCollider;
     [SerializeField] protected NPCDialogueTrigger elder;
     [SerializeField] protected Dialogue newElderDialogue;
 
@@ -36,6 +38,7 @@ public class GameManager : MonoBehaviour
     {
         GameState = 0;
         treeInteraction.NPC = false;
+        treeCollider.enabled = false;
         HornsRenderer = HornsPrefab.gameObject.GetComponent<MeshRenderer>();
         HornNormalMaterial = HornsRenderer.material;
     }
@@ -67,12 +70,14 @@ public class GameManager : MonoBehaviour
         if (GameState > 0)
         {
             scarf.SetActive(true);
+            scarfLoose.SetActive(true);
             scarfCol.enabled = true;
             HornsRenderer.material = HornBlightMaterial;
             VillageBoundary.gameObject.GetComponent<BoxCollider>().enabled = false;
         }
         else {
             scarf.SetActive(false);
+            scarfLoose.SetActive(false);
             scarfCol.enabled = false;
             HornsRenderer.material = HornNormalMaterial;
             VillageBoundary.gameObject.GetComponent<BoxCollider>().enabled = true;
